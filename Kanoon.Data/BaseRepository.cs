@@ -7,13 +7,19 @@ using System.Text;
 
 namespace Kanoon.Data
 {
-    public class Repository
+    public class BaseRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly AppDbContext _context;
-        public Repository(AppDbContext context)
+
+        public BaseRepository(AppDbContext context)
         {
             _context = context;
         }
-        
+
+        public ServiceResult Create(TEntity entity)
+        {
+            _context.Add(entity);
+            return _context.Save();
+        }
     }
 }

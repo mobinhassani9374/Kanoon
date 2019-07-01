@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Kanoon.DomainModels.Entities
 {
-    public abstract class BaseEntity<TKey>
+    public abstract class BaseEntity
     {
-        public TKey Id { get; set; }
+        public int Id { get; set; }
     }
 }
