@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.DomainModels", "Kano
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.Utility", "Kanoon.Utility\Kanoon.Utility.csproj", "{1EAA559C-CEEA-4142-8933-2BDFB906A21F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.Data", "Kanoon.Data\Kanoon.Data.csproj", "{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1EAA559C-CEEA-4142-8933-2BDFB906A21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EAA559C-CEEA-4142-8933-2BDFB906A21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EAA559C-CEEA-4142-8933-2BDFB906A21F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
