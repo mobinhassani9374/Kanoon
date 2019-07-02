@@ -13,6 +13,7 @@ namespace Kanoon.Data.Context
         {
 
         }
+        public DbSet<Location> Locations { get; set; }
 
         public ServiceResult Save()
         {
