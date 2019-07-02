@@ -9,3 +9,7 @@ h1, h2, h3, h4, h5, h6, input, textarea {
 .navbar-nav {
     justify-content: flex-end;
 }
+
+main {
+    margin-top: 50px;
+}
