@@ -10,5 +10,7 @@ namespace Kanoon.DomainModels.Entities
         /// عنوان محله
         /// </summary>
         public string Title { get; set; }
+
+        public ICollection<LocationMember> Members { get; set; }
     }
 }
