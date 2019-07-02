@@ -12,4 +12,9 @@ h1, h2, h3, h4, h5, h6, input, textarea {
 
 main {
     margin-top: 50px;
+    padding: 20px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    margin-left: 0.5rem;
 }
