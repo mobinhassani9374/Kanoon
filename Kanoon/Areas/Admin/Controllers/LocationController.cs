@@ -12,12 +12,11 @@ using Newtonsoft.Json;
 namespace Kanoon.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class LocationController : Controller
+    public class LocationController : BaseController<Location>
     {
-        private readonly BaseRepository<Location> _repo;
-        public LocationController(BaseRepository<Location> repo)
+        public LocationController(BaseRepository<Location> repo) : base(repo)
         {
-            _repo = repo;
+
         }
         public IActionResult Index()
         {
@@ -29,7 +28,7 @@ namespace Kanoon.Areas.Admin.Controllers
         public IActionResult ApiCreate(LocationCreateModel model)
         {
             if (!ModelState.IsValid)
-                return Ok(ServiceResult.Error());
+                return Ok(ServiceResult.Error(ModelState));
 
             var result = _repo.Create(new Location
             {
