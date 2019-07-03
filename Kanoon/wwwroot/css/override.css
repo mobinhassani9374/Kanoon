@@ -83,3 +83,7 @@ main {
 .list-group-item >a:hover {
     background-color: #f7f5f5
 }
+
+.ajax-loader {
+    max-width:200px;
+}
