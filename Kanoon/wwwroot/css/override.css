@@ -97,3 +97,28 @@ main {
     text-align: right;
     font-size: 18px;
 }
+
+.modal-header {
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.modal-header .close {
+    margin: 0;
+    margin-left: -15px;
+    outline: none !important;
+}
+
+.form-group > label {
+    display: block;
+    text-align: right;
+}
+
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.align-center {
+    align-items: center;
+}

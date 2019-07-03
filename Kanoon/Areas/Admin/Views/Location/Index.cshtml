@@ -4,76 +4,130 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="/admin">صفحه اصلی پنل ادمین </a></li>
-  <li class="breadcrumb-item active">مدیریت محله ها </li>
-</ol>
+<div id="app">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin">صفحه اصلی پنل ادمین </a></li>
+        <li class="breadcrumb-item active">مدیریت محله ها</li>
+    </ol>
 
-<div class="row">
-    <div class="col-xl-12 col-12 mb-4 mb-xl-0">
-        <div class="text-right">
-            <button class="btn btn-outline-dark">اضافه نمودن محله جدید </button>
+    <div class="row">
+        <div class="col-xl-12 col-12 mb-4 mb-xl-0">
+            <div class="text-right">
+                <button class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">اضافه نمودن محله جدید </button>
+            </div>
+            <h3 class="text-muted text-center mb-3">لیست محله های ثبت شده </h3>
+            <table class="table table-striped bg-light text-center ">
+            <thead>
+                <tr class="text-muted">
+                    <th>#</th>
+                    <th>نام</th>
+                    <th>حقوق</th>
+                    <th>تاریخ</th>
+                    <th>تماس</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>فاطمه محسنی</td>
+                    <td>12,000ريال</td>
+                    <td>98-02-01</td> 
+                    <td><button data-role="ladda" type="button" class="btn btn-info btn-sm ladda-button" data-style="slide-right">
+                        <span class="ladda-label">لادا باتن</span>
+                    </button></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>علی محسنی</td>
+                    <td>12,000ريال</td>
+                    <td>98-02-01</td>
+                    <td><button type="button" data-role="toastr" class="btn btn-info btn-sm">پیام نمایشی </button></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>محمد حسین محسنی</td>
+                    <td>12,000ريال</td>
+                    <td>98-02-01</td>
+                    <td><button data-role="swal" type="button" class="btn btn-info btn-sm">سوییت الرت</button></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>رویا محمدی</td>
+                    <td>12,000ريال</td>
+                    <td>98-02-01</td>
+                    <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>فاطمه فراهانی</td>
+                    <td>12,000ريال</td>
+                    <td>98-02-01</td>
+                    <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <img src="~/img/ajax-loader.gif" class="ajax-loader" />
+                    </td>
+                </tr>
+            </tbody>
+            </table>
         </div>
-        <h3 class="text-muted text-center mb-3">لیست محله های ثبت شده </h3>
-        <table class="table table-striped bg-light text-center ">
-        <thead>
-            <tr class="text-muted">
-                <th>#</th>
-                <th>نام</th>
-                <th>حقوق</th>
-                <th>تاریخ</th>
-                <th>تماس</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>1</th>
-                <td>فاطمه محسنی</td>
-                <td>12,000ريال</td>
-                <td>98-02-01</td> 
-                <td><button data-role="ladda" type="button" class="btn btn-info btn-sm ladda-button" data-style="slide-right">
-                    <span class="ladda-label">لادا باتن</span>
-                </button></td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>علی محسنی</td>
-                <td>12,000ريال</td>
-                <td>98-02-01</td>
-                <td><button type="button" data-role="toastr" class="btn btn-info btn-sm">پیام نمایشی </button></td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>محمد حسین محسنی</td>
-                <td>12,000ريال</td>
-                <td>98-02-01</td>
-                <td><button data-role="swal" type="button" class="btn btn-info btn-sm">سوییت الرت</button></td>
-            </tr>
-            <tr>
-                <th>4</th>
-                <td>رویا محمدی</td>
-                <td>12,000ريال</td>
-                <td>98-02-01</td>
-                <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
-            </tr>
-            <tr>
-                <th>5</th>
-                <td>فاطمه فراهانی</td>
-                <td>12,000ريال</td>
-                <td>98-02-01</td>
-                <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
-            </tr>
-            <tr>
-                <td colspan="5">
-                    <img src="~/img/ajax-loader.gif" class="ajax-loader" />
-                </td>
-            </tr>
-        </tbody>
-        </table>
+    </div>
+
+    <div class="modal fade " id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">اضافه نمودن محله جدید </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>نام محله را وارد کنید</label>
+                    <input type="text" class="form-control" placeholder="نام محله">
+                </div>
+                <div class="form-group">
+                    <label>نام مسئول محله را وارد کنید</label>
+                    <input type="text" class="form-control" placeholder="نام مسئول محله">
+                </div>
+                <div class="row align-center">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label>   شماره تلفن مسئول را وارد کنید</label>
+                            <input type="text" class="form-control" placeholder="شماره تلفن مسئول">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <button class="btn btn-info btn-block">
+                            اضافه نمودن شماره جدید 
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">        
+                <button type="button" class="btn btn-success w-100 mr-1">ثبت اطلاعات</button>
+            </div>
+
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
+
+    new Vue({
+        el:'#app',
+        data:{
+            name:'location'
+        }
+    })
+
     $(function(){
         $('[data-role="ladda"]').on('click',function() {       
             var l = Ladda.create(this);
@@ -87,6 +141,8 @@
             toastr.success('با موفقیت حذف شد ')
         })        
     })
+
+   
 </script>
 
 
