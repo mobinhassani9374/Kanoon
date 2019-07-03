@@ -12,12 +12,11 @@ using Newtonsoft.Json;
 namespace Kanoon.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class LocationController : Controller
+    public class LocationController : BaseController<Location>
     {
-        private readonly BaseRepository<Location> _repo;
-        public LocationController(BaseRepository<Location> repo)
+        public LocationController(BaseRepository<Location> repo) : base(repo)
         {
-            _repo = repo;
+
         }
         public IActionResult Index()
         {
