@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Kanoon.Utility
@@ -23,7 +24,7 @@ namespace Kanoon.Utility
         {
             return new ServiceResult()
             {
-                IsSuccess = true,
+                IsSuccess = false,
                 Message = "در انجام عملیات خطایی رخ داد مجددا تلاش کنید"
             };
         }
@@ -39,17 +40,33 @@ namespace Kanoon.Utility
         {
             return new ServiceResult()
             {
-                IsSuccess = true,
+                IsSuccess = false,
                 Message = message
             };
         }
 
         public static ServiceResult Error(ModelStateDictionary modelState)
         {
+            var errors = modelState
+                .Select(c => c.Value)
+                .Select(c => c.Errors)
+                .ToList();
+
+            var errorMessages = errors
+                .SelectMany(c => c.Select(i => i.ErrorMessage))
+                .ToList();
+
+            var messages = "";
+
+            errorMessages.ForEach(c =>
+            {
+                messages += $"{c} <br/>";
+            });
+
             return new ServiceResult()
             {
-                IsSuccess = true,
-                Message = "در انجام عملیات خطایی رخ داد مجددا تلاش کنید"
+                IsSuccess = false,
+                Message = messages
             };
         }
     }

@@ -28,7 +28,7 @@ namespace Kanoon.Areas.Admin.Controllers
         public IActionResult ApiCreate(LocationCreateModel model)
         {
             if (!ModelState.IsValid)
-                return Ok(ServiceResult.Error());
+                return Ok(ServiceResult.Error(ModelState));
 
             var result = _repo.Create(new Location
             {
