@@ -87,3 +87,7 @@ main {
 .ajax-loader {
     max-width:200px;
 }
+
+.ladda-button {
+    direction: ltr;
+}
