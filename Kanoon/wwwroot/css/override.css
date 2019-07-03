@@ -91,3 +91,9 @@ main {
 .ladda-button {
     direction: ltr;
 }
+
+.toast-message {
+    direction: rtl;
+    text-align: right;
+    font-size: 18px;
+}
