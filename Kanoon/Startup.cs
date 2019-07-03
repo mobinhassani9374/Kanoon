@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Kanoon.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using Kanoon.Data;
+using Kanoon.DomainModels.Entities;
 
 namespace Kanoon
 {
@@ -30,6 +32,9 @@ namespace Kanoon
             {
                 options.UseSqlServer(_configurationRoot.GetConnectionString("DefaultConnection"));
             });
+
+            // add repository
+            services.AddScoped<BaseRepository<Location>>();
 
             services.AddMvc();
         }

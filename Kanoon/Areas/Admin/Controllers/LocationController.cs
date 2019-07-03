@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kanoon.Data;
+using Kanoon.DomainModels.Entities;
 using Kanoon.DomainModels.Models.Location;
+using Kanoon.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Kanoon.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class LocationController : Controller
     {
+        private readonly BaseRepository<Location> _repo;
+        public LocationController(BaseRepository<Location> repo)
+        {
+            _repo = repo;
+        }
         public IActionResult Index()
         {
             return View();
@@ -18,7 +27,24 @@ namespace Kanoon.Areas.Admin.Controllers
         #region Api
         public IActionResult ApiCreate(LocationCreateModel model)
         {
-            return Ok();
+            if (!ModelState.IsValid)
+                return Ok(ServiceResult.Error());
+
+            var result = _repo.Create(new Location
+            {
+                Title = model.Title,
+                Members = new List<LocationMember>()
+                {
+                    new LocationMember()
+                    {
+                         FullName=model.ManagerFullName,
+                         Type= MemberType.Manager,
+                         PhoneNumbers=JsonConvert.SerializeObject(model.ManagerPhoneNumbers)
+                    }
+                }
+            });
+
+            return Ok(result);
         }
         #endregion
     }
