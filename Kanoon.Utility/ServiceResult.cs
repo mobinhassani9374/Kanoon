@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -40,6 +41,15 @@ namespace Kanoon.Utility
             {
                 IsSuccess = true,
                 Message = message
+            };
+        }
+
+        public static ServiceResult Error(ModelStateDictionary modelState)
+        {
+            return new ServiceResult()
+            {
+                IsSuccess = true,
+                Message = "در انجام عملیات خطایی رخ داد مجددا تلاش کنید"
             };
         }
     }
