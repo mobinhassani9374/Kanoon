@@ -12,7 +12,6 @@ namespace Kanoon.DomainModels.Models.Location
         /// </summary>
         [Required(ErrorMessage = "عنوان محله نمی تواند فاقد مقدار باشد")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "مسئول محله نمی تواند فاقد مقدار باشد")]
         public string ManagerFullName { get; set; }
 
         public List<string> ManagerPhoneNumbers { get; set; } = new List<string>();
