@@ -25,6 +25,7 @@ namespace Kanoon.Areas.Admin.Controllers
         }
 
         #region Api
+        [HttpPost]
         public IActionResult ApiCreate(LocationCreateModel model)
         {
             if (!ModelState.IsValid)
