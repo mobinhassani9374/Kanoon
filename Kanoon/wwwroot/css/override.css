@@ -122,3 +122,7 @@ main {
 .align-center {
     align-items: center;
 }
+
+ .table td {
+     vertical-align: middle;
+ }

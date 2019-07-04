@@ -20,17 +20,28 @@
             <thead>
                 <tr class="text-muted">
                     <th>#</th>
-                    <th>نام</th>
-                    <th>حقوق</th>
-                    <th>تاریخ</th>
-                    <th>تماس</th>
+                    <th>نام محله </th>
+                    <th>نام مسئول محله </th>
+                    <th>شماره مسئول محله</th>
+                    <th>تعداد مسئول جانشین</th>
+                    <th>عملیات</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-if="loading">
-                    <td colspan="5">
+                    <td colspan="6">
                         <img src="~/img/ajax-loader.gif" class="ajax-loader" />
                     </td>
+                </tr>
+                <tr v-if="!loading" v-for="(item , index) in datas">
+                    <td>{{++index}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.managerFullName}}</td>
+                    <td>
+                        <div v-for="phoneNumber in item.managerPhoneNumbers">{{phoneNumber}}</div>
+                    </td>
+                    <td>{{item.countSuccessor}}</td>
+                    <td></td>
                 </tr>
             </tbody>
             </table>
@@ -88,8 +99,7 @@
 </div>
 
 <script>
-
-    new Vue({
+   var app= new Vue({
         el:'#app',
         data:{
             location:{
@@ -106,8 +116,9 @@
                 this.datas=[];
                 $.ajax({
                     url:'/Admin/Location/ApiGet',
-                    success:function(response){
-                        debugger
+                    success:function(response){                                           
+                        app.loading=false;
+                        app.datas=response;
                     },
                     error:function(error){
                         toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
@@ -140,13 +151,13 @@
                     success:function(response){                     
                         if(response.isSuccess) {
                             toastr.success(response.message)
-                            this.getData()
+                            $('#modalLocation').modal('hide')
+                            app.getData()
                         }
                         else {
                             toastr.error(response.message)                            
                         }
-                        l.stop()
-                        $('#modalLocation').modal('hide')
+                        l.stop()                        
                     },
                     error:function(error){
                         toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
