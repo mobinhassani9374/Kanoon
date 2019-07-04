@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-xl-12 col-12 mb-4 mb-xl-0">
             <div class="text-right">
-                <button class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">اضافه نمودن محله جدید </button>
+                <button class="btn btn-outline-dark" v-on:click="openModalAdd()">اضافه نمودن محله جدید </button>
             </div>
             <h3 class="text-muted text-center mb-3">لیست محله های ثبت شده </h3>
             <table class="table table-striped bg-light text-center ">
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="modal fade " id="myModal">
+    <div class="modal fade " id="modalLocation">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -98,11 +98,14 @@
                     <div class="col-7">
                         <div class="form-group">
                             <label>   شماره تلفن مسئول را وارد کنید</label>
-                            <input type="text" class="form-control" placeholder="شماره تلفن مسئول">
+                            <div class="d-flex align-center mb-1" v-for="(item,index) in location.phoneNumber">
+                                <input v-model="item.value" type="text" class="form-control" placeholder="شماره تلفن مسئول">
+                                <i v-on:click="deletePhoneNumber(index)" class="fa fa-times fa-lg text-danger mr-1"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="col-5">
-                        <button class="btn btn-info btn-block">
+                        <button  class="btn btn-info btn-block" v-on:click="addPhoneNumber()">
                             اضافه نمودن شماره جدید 
                         </button>
                     </div>
@@ -111,7 +114,9 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">        
-                <button type="button" v-on:click="addLocation()" class="btn btn-success w-100 mr-1">ثبت اطلاعات</button>
+                <button data-role="addLocation" type="button" v-on:click="addLocation()" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
+                    <span class="ladda-label">ثبت اطلاعات</span>
+                </button>
             </div>
 
             </div>
@@ -127,12 +132,62 @@
             location:{
                 name:'',
                 manager:'',
-                phoneNumber:['']
+                phoneNumber:[{value:''}]
             }
         },
         methods : {
-            addLocation:function(){
-                debugger
+            addLocation:function(){               
+                console.log(this.location);
+                if(this.location.name=='') {
+                    toastr.error('نام محله نمی تواند خالی باشد ')
+                    return
+                }
+                var l = Ladda.create(document.querySelector('[data-role="addLocation"]'));
+                l.start();
+                var location = this.location;
+                var data = {
+                    title:location.name,
+                    managerFullName : location.manager,
+                    managerPhoneNumbers:[]
+                }
+                location.phoneNumber.map(function (item) {
+                    if(item.value!="") {
+                        data.managerPhoneNumbers.push(item.value)
+                    }
+                })
+                $.ajax({
+                    url:'/Admin/Location/ApiCreate',
+                    method:'Post',
+                    data: data,
+                    success:function(response){                     
+                        if(response.isSuccess) {
+                            toastr.success(response.message)
+                        }
+                        else {
+                            toastr.error(response.message)                            
+                        }
+                        l.stop()
+                        $('#modalLocation').modal('hide')
+                    },
+                    error:function(error){
+                        toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                        l.stop()
+                    }          
+                })                             
+            }, 
+            addPhoneNumber:function(){
+                this.location.phoneNumber.push({value:''})
+            },
+            deletePhoneNumber:function(index){
+                this.location.phoneNumber.splice(index, 1);
+            },
+            openModalAdd:function(){               
+                this.location={
+                    name:'',
+                    manager:'',
+                    phoneNumber:[{value:''}]
+                } 
+                $('#modalLocation').modal({backdrop: 'static', keyboard: false})
             }
         }
     })
@@ -149,7 +204,7 @@
         $('[data-role="toastr"]').on('click',function(){
             toastr.success('با موفقیت حذف شد ')
         })        
-    })
+    })   
 
    
 </script>
