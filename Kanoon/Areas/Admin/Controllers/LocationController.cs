@@ -30,7 +30,7 @@ namespace Kanoon.Areas.Admin.Controllers
             if (!ModelState.IsValid)
                 return Ok(ServiceResult.Error(ModelState));
 
-            var result = _repo.Create(new Location
+            var location = new Location
             {
                 Title = model.Title,
                 Members = new List<LocationMember>()
@@ -42,7 +42,9 @@ namespace Kanoon.Areas.Admin.Controllers
                          PhoneNumbers=JsonConvert.SerializeObject(model.ManagerPhoneNumbers)
                     }
                 }
-            });
+            };
+
+            var result = _repo.Create(location);
 
             return Ok(result);
         }
