@@ -27,44 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>فاطمه محسنی</td>
-                    <td>12,000ريال</td>
-                    <td>98-02-01</td> 
-                    <td><button data-role="ladda" type="button" class="btn btn-info btn-sm ladda-button" data-style="slide-right">
-                        <span class="ladda-label">لادا باتن</span>
-                    </button></td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>علی محسنی</td>
-                    <td>12,000ريال</td>
-                    <td>98-02-01</td>
-                    <td><button type="button" data-role="toastr" class="btn btn-info btn-sm">پیام نمایشی </button></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>محمد حسین محسنی</td>
-                    <td>12,000ريال</td>
-                    <td>98-02-01</td>
-                    <td><button data-role="swal" type="button" class="btn btn-info btn-sm">سوییت الرت</button></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>رویا محمدی</td>
-                    <td>12,000ريال</td>
-                    <td>98-02-01</td>
-                    <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>فاطمه فراهانی</td>
-                    <td>12,000ريال</td>
-                    <td>98-02-01</td>
-                    <td><button type="button" class="btn btn-info btn-sm">پیام</button></td>
-                </tr>
-                <tr>
+                <tr v-if="loading">
                     <td colspan="5">
                         <img src="~/img/ajax-loader.gif" class="ajax-loader" />
                     </td>
@@ -133,9 +96,24 @@
                 name:'',
                 manager:'',
                 phoneNumber:[{value:''}]
-            }
+            },
+            loading:true,
+            datas:[]
         },
         methods : {
+            getData:function(){
+                this.loading=true;
+                this.datas=[];
+                $.ajax({
+                    url:'/Admin/Location/ApiGet',
+                    success:function(response){
+                        debugger
+                    },
+                    error:function(error){
+                        toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                    }
+                })
+            },
             addLocation:function(){               
                 console.log(this.location);
                 if(this.location.name=='') {
@@ -162,6 +140,7 @@
                     success:function(response){                     
                         if(response.isSuccess) {
                             toastr.success(response.message)
+                            this.getData()
                         }
                         else {
                             toastr.error(response.message)                            
@@ -189,6 +168,9 @@
                 } 
                 $('#modalLocation').modal({backdrop: 'static', keyboard: false})
             }
+        } , 
+        created:function(){
+            this.getData()
         }
     })
 
