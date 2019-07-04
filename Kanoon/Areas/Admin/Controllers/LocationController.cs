@@ -7,6 +7,7 @@ using Kanoon.DomainModels.Entities;
 using Kanoon.DomainModels.Models.Location;
 using Kanoon.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace Kanoon.Areas.Admin.Controllers
@@ -47,6 +48,44 @@ namespace Kanoon.Areas.Admin.Controllers
             var result = _repo.Create(location);
 
             return Ok(result);
+        }
+
+        public IActionResult ApiGet()
+        {
+            var data = _repo
+                .AsQueryable()
+                .Include(c => c.Members)
+                .ToList();
+
+            var model = new List<LocationModel>();
+
+            data.ForEach(c =>
+            {
+                var locationModel = new LocationModel();
+
+                locationModel.Title = c.Title;
+
+                var manger = c.Members.FirstOrDefault(i => i.Type == MemberType.Manager);
+
+                locationModel.ManagerFullName = manger?.FullName;
+
+                if (string.IsNullOrEmpty(manger?.PhoneNumbers))
+                {
+                    locationModel.ManagerPhoneNumbers = new List<string>();
+                }
+                else
+                {
+                    locationModel.ManagerPhoneNumbers = JsonConvert
+                    .DeserializeObject<List<string>>(manger?.PhoneNumbers);
+                }
+
+                locationModel.CountSuccessor = c.Members.Where(i => i.Type == MemberType.Successor).Count();
+
+                model.Add(locationModel);
+            });
+
+
+            return Ok(model);
         }
         #endregion
     }
