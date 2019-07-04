@@ -88,11 +88,11 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>نام محله را وارد کنید</label>
-                    <input type="text" class="form-control" placeholder="نام محله">
+                    <input type="text" v-model="location.name" class="form-control" placeholder="نام محله">
                 </div>
                 <div class="form-group">
                     <label>نام مسئول محله را وارد کنید</label>
-                    <input type="text" class="form-control" placeholder="نام مسئول محله">
+                    <input type="text" v-model="location.manager" class="form-control" placeholder="نام مسئول محله">
                 </div>
                 <div class="row align-center">
                     <div class="col-7">
@@ -111,7 +111,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">        
-                <button type="button" class="btn btn-success w-100 mr-1">ثبت اطلاعات</button>
+                <button type="button" v-on:click="addLocation()" class="btn btn-success w-100 mr-1">ثبت اطلاعات</button>
             </div>
 
             </div>
@@ -124,7 +124,16 @@
     new Vue({
         el:'#app',
         data:{
-            name:'location'
+            location:{
+                name:'',
+                manager:'',
+                phoneNumber:['']
+            }
+        },
+        methods : {
+            addLocation:function(){
+                debugger
+            }
         }
     })
 
