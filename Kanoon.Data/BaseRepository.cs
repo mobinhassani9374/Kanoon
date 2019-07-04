@@ -4,6 +4,7 @@ using Kanoon.Utility;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Kanoon.Data
 {
@@ -20,6 +21,11 @@ namespace Kanoon.Data
         {
             _context.Add(entity);
             return _context.Save();
+        }
+
+        public IQueryable<TEntity> AsQueryable()
+        {
+            return _context.Set<TEntity>().AsQueryable();
         }
     }
 }
