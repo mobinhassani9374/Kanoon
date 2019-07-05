@@ -126,3 +126,7 @@ main {
  .table td {
      vertical-align: middle;
  }
+
+ .sweet-alert p , .sweet-alert button {
+    font-family: "MyriadArabic" !important;
+ }
