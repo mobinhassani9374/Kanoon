@@ -110,42 +110,42 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4  class="modal-title">اضافه نمودن جانشین جدید </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4  class="modal-title">اضافه نمودن جانشین جدید </h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>نام جانشین را وارد کنید</label>
-                    <input type="text" v-model="successor.name" class="form-control" placeholder="نام جانشین">
-                </div>                
-                <div class="row align-center">
-                    <div class="col-7">
-                        <div class="form-group">
-                            <label>   شماره تلفن جانشین را وارد کنید</label>
-                            <div class="d-flex align-center mb-1" v-for="(item,index) in successor.phoneNumber">
-                                <input v-model="item.value" type="text" class="form-control" placeholder="شماره تلفن مسئول">
-                                <i v-on:click="deletePhoneNumber(index)" class="fa fa-times fa-lg text-danger mr-1"></i>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>نام جانشین را وارد کنید</label>
+                        <input type="text" v-model="successor.name" class="form-control" placeholder="نام جانشین">
+                    </div>                
+                    <div class="row align-center">
+                        <div class="col-7">
+                            <div class="form-group">
+                                <label>شماره تلفن جانشین را وارد کنید</label>
+                                <div class="d-flex align-center mb-1" v-for="(item,index) in successor.phoneNumber">
+                                    <input v-model="item.value" type="text" class="form-control" placeholder="شماره تلفن جانشین">
+                                    <i v-on:click="deletePhoneNumberForSuccessor(index)" class="fa fa-times fa-lg text-danger mr-1"></i>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-5">
-                        <button  class="btn btn-info btn-block" v-on:click="addPhoneNumber()">
-                            اضافه نمودن شماره جدید 
-                        </button>
+                        <div class="col-5">
+                            <button  class="btn btn-info btn-block" v-on:click="addPhoneNumberForSuccessor()">
+                                اضافه نمودن شماره جدید 
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">        
-                <button data-role="addSuccessor" type="button" v-on:click="addSuccessor()" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
-                    <span  class="ladda-label">ثبت اطلاعات</span>                   
-                </button>
-            </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">        
+                    <button data-role="addSuccessor" type="button" v-on:click="addSuccessor()" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
+                        <span  class="ladda-label">ثبت اطلاعات</span>                   
+                    </button>
+                </div>
 
             </div>
         </div>
@@ -278,21 +278,11 @@
                     }          
                 })                             
             }, 
-            addPhoneNumber:function(){debugger
-                if(this.state=='add') {
-                    this.location.phoneNumber.push({value:''})
-                }
-                else if(this.state=='successorAdd') {
-                    this.successor.phoneNumber.push({value:''})
-                }                
+            addPhoneNumber:function(){
+                this.location.phoneNumber.push({value:''})                
             },
             deletePhoneNumber:function(index){
-                if(this.state=='add'){
-                    this.location.phoneNumber.splice(index, 1);
-                }
-                else if(this.state=='successorAdd') {
-                    this.successor.phoneNumber.splice(index, 1);
-                }                
+                this.location.phoneNumber.splice(index, 1);                
             },
             openModalAdd:function(){  
                 this.state = 'add'  ;     
@@ -353,6 +343,7 @@
             },
             // جانشین 
             openModalSuccessor:function(id){
+                debugger
                 this.state = 'successorAdd';                  
                 this.successor={
                     locationId : id,
@@ -440,7 +431,14 @@
                         }          
                     })
                 }
-                )}
+                )
+            },
+            addPhoneNumberForSuccessor:function(){               
+                this.successor.phoneNumber.push({value:''})                
+            },
+            deletePhoneNumberForSuccessor:function(index){              
+                this.successor.phoneNumber.splice(index, 1);                
+            },
         } , 
         created:function(){
             this.getData()
