@@ -43,6 +43,11 @@ namespace Kanoon.Data
             return _context.Set<TEntity>().Find(id);
         }
 
+        public T Find<T>(int id) where T : BaseEntity
+        {
+            return _context.Set<T>().Find(id);
+        }
+
         public ServiceResult Update(TEntity entity)
         {
             _context.Update(entity);
