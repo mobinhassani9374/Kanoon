@@ -47,6 +47,7 @@
                             <span  class="ladda-label">حذف</span>                           
                         </button>
                         <button class="btn btn-success" v-on:click="openModalSuccessor(item.id)">اضافه نمودن جانشین</button>
+                        <button class="btn btn-primary" v-on:click="detailSuccessor(item)">مشاهده جانشین ها </button>
                     </td>
                 </tr>
             </tbody>
@@ -149,6 +150,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalSuccessorDetail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4  class="modal-title">مشاهده جانشین ها </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>نام جانشین </th>
+                                <th>شماره همراه</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in successor.data">
+                                <td>{{item.fullName}}</td>
+                                <td>
+                                    <div v-for="phone in item.phoneNumbers">{{phone}}</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -165,7 +204,8 @@
                 locationId:'',
                 id:'',
                 name:'',
-                phoneNumber:[{value:''}]
+                phoneNumber:[{value:''}],
+                data:[]
             },
             loading:true,
             datas:[],
@@ -313,7 +353,7 @@
                     phoneNumber:[{value:''}]
                 } 
                 $('#modalSuccessor').modal({backdrop: 'static', keyboard: false})
-            }, 
+            },
             addSuccessor:function(){    
                 if(this.successor.name=='') {
                     toastr.error('نام جانشین نمی تواند خالی باشد ')
@@ -354,6 +394,10 @@
                         l.stop()
                     }          
                 })  
+            },
+            detailSuccessor:function(item){
+                this.successor.data= item.successor;               
+                $('#modalSuccessorDetail').modal({backdrop: 'static', keyboard: false})
             }
         } , 
         created:function(){
