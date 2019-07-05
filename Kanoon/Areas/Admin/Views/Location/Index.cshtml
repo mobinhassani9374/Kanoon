@@ -46,7 +46,7 @@
                          <button :data-id="item.id" data-role="deleteLocation" type="button" v-on:click="deleteLocation(item.id)" class="btn btn-danger ladda-button" data-style="slide-right">
                             <span  class="ladda-label">حذف</span>                           
                         </button>
-                        <button class="btn btn-success" v-on:click="openModalSuccessor()">اضافه نمودن جانشین</button>
+                        <button class="btn btn-success" v-on:click="openModalSuccessor(item.id)">اضافه نمودن جانشین</button>
                     </td>
                 </tr>
             </tbody>
@@ -162,6 +162,7 @@
                 phoneNumber:[{value:''}]
             },
             successor : {
+                locationId:'',
                 id:'',
                 name:'',
                 phoneNumber:[{value:''}]
@@ -303,20 +304,56 @@
                     }) 
                 });
             },
-
             // جانشین 
-
-            openModalSuccessor:function(){
-                this.state = 'successorAdd';     
+            openModalSuccessor:function(id){
+                this.state = 'successorAdd';                  
                 this.successor={
+                    locationId : id,
                     name:'',
                     phoneNumber:[{value:''}]
                 } 
                 $('#modalSuccessor').modal({backdrop: 'static', keyboard: false})
             }, 
-            addSuccessor:function(){              
+            addSuccessor:function(){    
+                if(this.successor.name=='') {
+                    toastr.error('نام جانشین نمی تواند خالی باشد ')
+                    return;
+                }
                 var l = Ladda.create(document.querySelector('[data-role="addSuccessor"]'));
                 l.start();
+            
+                var url = '/Admin/Location/ApiCreateSuccessor'
+                var data ={
+                    locationId:this.successor.locationId,
+                    fullName:this.successor.name,
+                    phoneNumbers:[]
+                }
+
+                this.successor.phoneNumber.map(function (item) {
+                    if(item.value!="") {
+                        data.phoneNumbers.push(item.value)
+                    }
+                })               
+                $.ajax({
+                    url:url,
+                    method:'Post',
+                    data: data,
+                    success:function(response){                     
+                        if(response.isSuccess) {
+                            toastr.success(response.message)
+                            $('#modalSuccessor').modal('hide')
+                            app.getData()
+                        }
+                        else {
+                            toastr.error(response.message)                            
+                        }
+                        l.stop()                        
+                    },
+                    error:function(error){
+                        toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                        l.stop()
+                    }          
+                })  
             }
         } , 
         created:function(){
