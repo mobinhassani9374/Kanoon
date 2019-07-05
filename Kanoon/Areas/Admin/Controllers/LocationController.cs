@@ -124,6 +124,14 @@ namespace Kanoon.Areas.Admin.Controllers
             return Ok(ServiceResult.Okay());
 
         }
+
+        public IActionResult ApiDelete(int id)
+        {
+            var location = _repo.Find(id);
+            if (location == null) return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
+            var result = _repo.Delete(location);
+            return Ok(result);
+        }
         #endregion
     }
 }
