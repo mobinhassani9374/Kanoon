@@ -6,6 +6,7 @@ namespace Kanoon.DomainModels.Models.Location
 {
     public class LocationModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
 
         public string ManagerFullName { get; set; }
