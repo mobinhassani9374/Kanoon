@@ -342,13 +342,14 @@
                 });
             },
             // جانشین 
-            openModalSuccessor:function(id){
-                debugger
+            openModalSuccessor:function(id){                
                 this.state = 'successorAdd';                  
-                this.successor={
-                    locationId : id,
+                 this.successor = {
+                    locationId:'',
+                    id:'',
                     name:'',
-                    phoneNumber:[{value:''}]
+                    phoneNumber:[{value:''}],
+                    data:[]
                 } 
                 $('#modalSuccessor').modal({backdrop: 'static', keyboard: false})
             },
@@ -439,7 +440,7 @@
             deletePhoneNumberForSuccessor:function(index){              
                 this.successor.phoneNumber.splice(index, 1);                
             },
-        } , 
+        }, 
         created:function(){
             this.getData()
         }
