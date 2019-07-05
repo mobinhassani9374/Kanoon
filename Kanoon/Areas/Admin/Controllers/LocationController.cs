@@ -131,6 +131,14 @@ namespace Kanoon.Areas.Admin.Controllers
             var location = _repo.Find(id);
             if (location == null) return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
             var result = _repo.Delete(location);
+
+            var members = _repo
+                .AsQueryable<LocationMember>()
+                .Where(c => c.LocationId == id)
+                .ToList();
+
+            _repo.DeleteAll<LocationMember>(members);
+
             return Ok(result);
         }
 

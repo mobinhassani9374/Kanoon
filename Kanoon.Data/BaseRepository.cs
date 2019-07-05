@@ -60,5 +60,15 @@ namespace Kanoon.Data
             _context.Remove(entity);
             return _context.Save();
         }
+
+        public ServiceResult DeleteAll<T>(List<T> entities) where T : BaseEntity
+        {
+            entities.ForEach(c =>
+            {
+                _context.Remove(c);
+            });
+
+            return _context.Save();
+        }
     }
 }
