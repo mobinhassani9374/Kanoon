@@ -162,7 +162,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body p-0">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -173,12 +173,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in successor.data">
+                            <tr v-for="(item , index) in successor.data">
                                 <td>{{item.fullName}}</td>
                                 <td>
                                     <div v-for="phone in item.phoneNumbers">{{phone}}</div>
                                 </td>
-                                <td></td>
+                                <td>
+                                    <button :data-id="item.id" data-role="deleteSuccessor" type="button" v-on:click="deleteSuccessor(item.id,index)" class="btn btn-danger ladda-button" data-style="slide-right">
+                                        <span  class="ladda-label">حذف</span>                           
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr v-if="successor.data.length==0">
+                                <td class="text-danger text-center" colspan="3">جانشینی ثبت نشده است </td>
                             </tr>
                         </tbody>
                     </table>
@@ -398,7 +405,42 @@
             detailSuccessor:function(item){
                 this.successor.data= item.successor;               
                 $('#modalSuccessorDetail').modal({backdrop: 'static', keyboard: false})
-            }
+            },
+            deleteSuccessor:function(id,index){          
+                swal({
+                    title: "حذف جانشین ",
+                    text: "آیا مطمئن هستید ؟؟ ",
+                    type: "warning",
+                    showCancelButton: true,                    
+                    confirmButtonText: "بله حذف کن",                  
+                    cancelButtonText: "نه منصرف شدم",
+                    closeOnConfirm: false,
+                    confirmButtonColor: "#dc3545",                  
+
+                }, function(){
+                     var l = Ladda.create(document.querySelector('[data-role="deleteSuccessor"][data-id="'+id+'"]'));
+                    l.start();
+                    swal.close()
+                    $.ajax({
+                        url:'/Admin/Location/ApiDeleteSuccessor/'+id,                       
+                        success:function(response){                     
+                            if(response.isSuccess) {
+                                toastr.success(response.message)
+                                app.successor.data.splice(index, 1);
+                                app.getData()
+                            }
+                            else {
+                                toastr.error(response.message)                            
+                            }
+                            l.stop()                        
+                        },
+                        error:function(error){
+                            toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                            l.stop()
+                        }          
+                    })
+                }
+                )}
         } , 
         created:function(){
             this.getData()
