@@ -89,6 +89,41 @@ namespace Kanoon.Areas.Admin.Controllers
 
             return Ok(model);
         }
+
+        [HttpPost]
+        public IActionResult ApiEdit(LocationUpdateModel model)
+        {
+            if (!ModelState.IsValid)
+                return Ok(ServiceResult.Error(ModelState));
+
+            // update location
+            var location = _repo.Find(model.Id);
+
+            if (location == null)
+                return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
+
+            location.Title = model.Title;
+
+            var updateResult = _repo.Update(location);
+
+            // update manager of location
+            var manager = _repo.AsQueryable<LocationMember>()
+                  .Where(c => c.Type == MemberType.Manager && c.LocationId == model.Id)
+                  .FirstOrDefault();
+
+            if (manager != null) _repo.Delete<LocationMember>(manager);
+
+            _repo.Create<LocationMember>(new LocationMember()
+            {
+                FullName = model.ManagerFullName,
+                LocationId = model.Id,
+                Type = MemberType.Manager,
+                PhoneNumbers = JsonConvert.SerializeObject(model.ManagerPhoneNumbers)
+            });
+
+            return Ok(ServiceResult.Okay());
+
+        }
         #endregion
     }
 }

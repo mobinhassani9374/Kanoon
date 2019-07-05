@@ -23,9 +23,42 @@ namespace Kanoon.Data
             return _context.Save();
         }
 
+        public ServiceResult Create<T>(T entity) where T : BaseEntity
+        {
+            _context.Add(entity);
+            return _context.Save();
+        }
+
         public IQueryable<TEntity> AsQueryable()
         {
             return _context.Set<TEntity>().AsQueryable();
+        }
+        public IQueryable<T> AsQueryable<T>() where T : BaseEntity
+        {
+            return _context.Set<T>().AsQueryable();
+        }
+
+        public TEntity Find(int id)
+        {
+            return _context.Set<TEntity>().Find(id);
+        }
+
+        public ServiceResult Update(TEntity entity)
+        {
+            _context.Update(entity);
+            return _context.Save();
+        }
+
+        public ServiceResult Delete(TEntity entity)
+        {
+            _context.Remove(entity);
+            return _context.Save();
+        }
+
+        public ServiceResult Delete<T>(T entity) where T : BaseEntity
+        {
+            _context.Remove(entity);
+            return _context.Save();
         }
     }
 }
