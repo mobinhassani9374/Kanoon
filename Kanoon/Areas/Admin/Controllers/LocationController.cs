@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Kanoon.Data;
 using Kanoon.DomainModels.Entities;
 using Kanoon.DomainModels.Models.Location;
+using Kanoon.DomainModels.Models.LocationMember;
 using Kanoon.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -123,6 +124,43 @@ namespace Kanoon.Areas.Admin.Controllers
 
             return Ok(ServiceResult.Okay());
 
+        }
+
+        public IActionResult ApiDelete(int id)
+        {
+            var location = _repo.Find(id);
+            if (location == null) return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
+            var result = _repo.Delete(location);
+
+            var members = _repo
+                .AsQueryable<LocationMember>()
+                .Where(c => c.LocationId == id)
+                .ToList();
+
+            _repo.DeleteAll<LocationMember>(members);
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public IActionResult ApiCreateSuccessor(LocationMemberCreateModel model)
+        {
+            if (!ModelState.IsValid)
+                return Ok(ServiceResult.Error(ModelState));
+
+            var location = _repo.Find(model.LocationId);
+
+            if (location == null) return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
+
+            var result = _repo.Create<LocationMember>(new LocationMember
+            {
+                FullName = model.FullName,
+                LocationId = model.LocationId,
+                PhoneNumbers = JsonConvert.SerializeObject(model.PhoneNumbers),
+                Type = MemberType.Successor
+            });
+
+            return Ok(result);
         }
         #endregion
     }
