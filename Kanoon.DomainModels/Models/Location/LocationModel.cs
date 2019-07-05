@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kanoon.DomainModels.Models.LocationMember;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,5 +15,7 @@ namespace Kanoon.DomainModels.Models.Location
         public List<string> ManagerPhoneNumbers { get; set; } = new List<string>();
 
         public int CountSuccessor { get; set; }
+
+        public List<LocationMemberModel> Successor { get; set; } = new List<LocationMemberModel>();
     }
 }

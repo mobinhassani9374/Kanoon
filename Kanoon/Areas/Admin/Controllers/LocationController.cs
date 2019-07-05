@@ -84,6 +84,20 @@ namespace Kanoon.Areas.Admin.Controllers
 
                 locationModel.CountSuccessor = c.Members.Where(i => i.Type == MemberType.Successor).Count();
 
+
+                var successor = c.Members.Where(i => i.Type == MemberType.Successor).ToList();
+
+                successor.ForEach(i =>
+                {
+                    locationModel.Successor.Add(new LocationMemberModel
+                    {
+                        FullName = i.FullName,
+                        Id = i.Id,
+                        LocationId = i.LocationId,
+                        PhoneNumbers = JsonConvert.DeserializeObject<List<string>>(i.PhoneNumbers)
+                    });
+                });
+
                 model.Add(locationModel);
             });
 
