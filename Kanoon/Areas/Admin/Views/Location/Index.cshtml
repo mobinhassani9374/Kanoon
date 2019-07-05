@@ -41,7 +41,10 @@
                         <div v-for="phoneNumber in item.managerPhoneNumbers">{{phoneNumber}}</div>
                     </td>
                     <td>{{item.countSuccessor}}</td>
-                    <td></td>
+                    <td>
+                        <button class="btn btn-info" v-on:click="editLocation(item)">ویرایش </button>
+                        <button class="btn btn-danger">حذف </button>
+                    </td>
                 </tr>
             </tbody>
             </table>
@@ -54,7 +57,8 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">اضافه نمودن محله جدید </h4>
+                <h4 v-if="state=='add'" class="modal-title">اضافه نمودن محله جدید </h4>
+                <h4 v-if="state=='edit'" class="modal-title">ویرایش نمودن محله  </h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -89,7 +93,8 @@
             <!-- Modal footer -->
             <div class="modal-footer">        
                 <button data-role="addLocation" type="button" v-on:click="addLocation()" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
-                    <span class="ladda-label">ثبت اطلاعات</span>
+                    <span v-if="state=='add'" class="ladda-label">ثبت اطلاعات</span>
+                    <span v-if="state=='edit'" class="ladda-label">ویرایش اطلاعات</span>
                 </button>
             </div>
 
@@ -103,12 +108,14 @@
         el:'#app',
         data:{
             location:{
+                id:'',
                 name:'',
                 manager:'',
                 phoneNumber:[{value:''}]
             },
             loading:true,
-            datas:[]
+            datas:[],
+            state : 'add'
         },
         methods : {
             getData:function(){
@@ -135,6 +142,7 @@
                 l.start();
                 var location = this.location;
                 var data = {
+                    id:location.id,
                     title:location.name,
                     managerFullName : location.manager,
                     managerPhoneNumbers:[]
@@ -144,8 +152,12 @@
                         data.managerPhoneNumbers.push(item.value)
                     }
                 })
+                var url= '/Admin/Location/ApiCreate';
+                if(this.state=='edit'){
+                    url='/Admin/Location/ApiEdit'
+                }
                 $.ajax({
-                    url:'/Admin/Location/ApiCreate',
+                    url:url,
                     method:'Post',
                     data: data,
                     success:function(response){                     
@@ -171,12 +183,26 @@
             deletePhoneNumber:function(index){
                 this.location.phoneNumber.splice(index, 1);
             },
-            openModalAdd:function(){               
+            openModalAdd:function(){  
+                this.state = 'add'  ;     
                 this.location={
                     name:'',
                     manager:'',
                     phoneNumber:[{value:''}]
                 } 
+                $('#modalLocation').modal({backdrop: 'static', keyboard: false})
+            },
+            editLocation:function(loc){
+                this.state = 'edit'; 
+                this.location= {
+                    id:loc.id,
+                    manager:loc.managerFullName,
+                    name : loc.title,
+                    phoneNumber:[]
+                }
+                loc.managerPhoneNumbers.map(function (item) {                    
+                    app.location.phoneNumber.push({value:item})
+                })
                 $('#modalLocation').modal({backdrop: 'static', keyboard: false})
             }
         } , 
@@ -184,22 +210,6 @@
             this.getData()
         }
     })
-
-    $(function(){
-        $('[data-role="ladda"]').on('click',function() {       
-            var l = Ladda.create(this);
-            l.start();
-            setTimeout(function(){
-                l.stop()
-            },1000)
-        })
-
-        $('[data-role="toastr"]').on('click',function(){
-            toastr.success('با موفقیت حذف شد ')
-        })        
-    })   
-
-   
 </script>
 
 
