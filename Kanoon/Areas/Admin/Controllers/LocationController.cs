@@ -63,6 +63,8 @@ namespace Kanoon.Areas.Admin.Controllers
             {
                 var locationModel = new LocationModel();
 
+                locationModel.Id = c.Id;
+
                 locationModel.Title = c.Title;
 
                 var manger = c.Members.FirstOrDefault(i => i.Type == MemberType.Manager);
