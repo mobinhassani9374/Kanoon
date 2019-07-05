@@ -43,7 +43,9 @@
                     <td>{{item.countSuccessor}}</td>
                     <td>
                         <button class="btn btn-info" v-on:click="editLocation(item)">ویرایش </button>
-                        <button class="btn btn-danger">حذف </button>
+                         <button :data-id="item.id" data-role="deleteLocation" type="button" v-on:click="deleteLocation(item.id)" class="btn btn-danger ladda-button" data-style="slide-right">
+                            <span  class="ladda-label">حذف</span>                           
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -204,6 +206,41 @@
                     app.location.phoneNumber.push({value:item})
                 })
                 $('#modalLocation').modal({backdrop: 'static', keyboard: false})
+            },
+            deleteLocation:function(id){               
+               
+                swal({
+                    title: "حذف محله ",
+                    text: "آیا مطمئن هستید ؟؟ ",
+                    type: "warning",
+                    showCancelButton: true,                    
+                    confirmButtonText: "بله حذف کن",                  
+                    cancelButtonText: "نه منصرف شدم",
+                    closeOnConfirm: false,
+                    confirmButtonColor: "#dc3545",                  
+
+                }, function(){
+                    var l = Ladda.create(document.querySelector('[data-role="deleteLocation"][data-id="'+id+'"]'));
+                    l.start();
+                    swal.close()
+                    $.ajax({
+                        url:'/Admin/Location/ApiDelete/'+id,                       
+                        success:function(response){                     
+                            if(response.isSuccess) {
+                                toastr.success(response.message)
+                                app.getData()
+                            }
+                            else {
+                                toastr.error(response.message)                            
+                            }
+                            l.stop()                        
+                        },
+                        error:function(error){
+                            toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                            l.stop()
+                        }          
+                    }) 
+                });
             }
         } , 
         created:function(){
