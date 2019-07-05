@@ -84,6 +84,20 @@ namespace Kanoon.Areas.Admin.Controllers
 
                 locationModel.CountSuccessor = c.Members.Where(i => i.Type == MemberType.Successor).Count();
 
+
+                var successor = c.Members.Where(i => i.Type == MemberType.Successor).ToList();
+
+                successor.ForEach(i =>
+                {
+                    locationModel.Successor.Add(new LocationMemberModel
+                    {
+                        FullName = i.FullName,
+                        Id = i.Id,
+                        LocationId = i.LocationId,
+                        PhoneNumbers = JsonConvert.DeserializeObject<List<string>>(i.PhoneNumbers)
+                    });
+                });
+
                 model.Add(locationModel);
             });
 
@@ -160,6 +174,14 @@ namespace Kanoon.Areas.Admin.Controllers
                 Type = MemberType.Successor
             });
 
+            return Ok(result);
+        }
+
+        public IActionResult ApiDeleteSuccessor(int id)
+        {
+            var member = _repo.Find<LocationMember>(id);
+            if (member == null) return Ok(ServiceResult.Error("شناسه ارسال شده فاقد اعتبار است"));
+            var result = _repo.Delete<LocationMember>(member);
             return Ok(result);
         }
         #endregion
