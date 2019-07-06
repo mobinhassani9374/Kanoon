@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kanoon.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class HeiatController : Controller
     {
         public IActionResult Index()
