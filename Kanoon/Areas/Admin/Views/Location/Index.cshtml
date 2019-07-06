@@ -4,7 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div id="app">
+<div id="app" v-cloak>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin">صفحه اصلی پنل ادمین </a></li>
         <li class="breadcrumb-item active">مدیریت محله ها</li>
@@ -30,7 +30,7 @@
             <tbody>
                 <tr v-if="loading">
                     <td colspan="6">
-                        <img src="~/img/ajax-loader.gif" class="ajax-loader" />
+                        <i class="fa fa-lg fa-spin fa-spinner"></i>
                     </td>
                 </tr>
                 <tr v-if="!loading" v-for="(item , index) in datas">
