@@ -70,4 +70,29 @@ namespace Kanoon.Utility
             };
         }
     }
+
+    public class ServiceResult<T> : ServiceResult
+    {
+        public T Data { get; set; }
+
+        public static ServiceResult<T> Okay(T data)
+        {
+            return new ServiceResult<T>()
+            {
+                IsSuccess = true,
+                Message = "عملیات با موفقیت صورت گرفت",
+                Data = data
+            };
+        }
+
+        public static ServiceResult<T> Error(T data)
+        {
+            return new ServiceResult<T>()
+            {
+                IsSuccess = false,
+                Message = "در انجام عملیات خطایی رخ داد مجددا تلاش کنید",
+                Data = data
+            };
+        }
+    }
 }
