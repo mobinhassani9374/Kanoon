@@ -130,3 +130,11 @@ main {
  .sweet-alert p , .sweet-alert button {
     font-family: "MyriadArabic" !important;
  }
+
+ .form-check-inline .form-check-input {
+    margin-top: 0px;
+    margin-right: 0.3125rem;
+    margin-left: .25rem;
+    position: relative;
+    top: 3px;
+ }
