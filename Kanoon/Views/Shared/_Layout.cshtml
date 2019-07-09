@@ -4,35 +4,224 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/css/icons.min.css">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/animate.min.css">
-    <link rel="stylesheet" href="~/css/fancybox.min.css">
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/jquery.circliful.css">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/rtl.css">
-    <link rel="stylesheet" href="~/css/shabnam.css">
-    <link rel="stylesheet" href="~/css/responsive.css">
+    <link rel="stylesheet" href="~/theme/css/icons.min.css">
+    <link rel="stylesheet" href="~/theme/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/theme/css/animate.min.css">
+    <link rel="stylesheet" href="~/theme/css/fancybox.min.css">
+    <link rel="stylesheet" href="~/theme/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/theme/css/jquery.circliful.css">
+    <link rel="stylesheet" href="~/theme/css/style.css">
+    <link rel="stylesheet" href="~/theme/css/rtl.css">
+    <link rel="stylesheet" href="~/theme/css/shabnam.css">
+    <link rel="stylesheet" href="~/theme/css/responsive.css">
 
     <!-- Color Scheme -->
-    <link rel="stylesheet" href="~/css/color3.css" title="color"><!-- Color -->
+    <link rel="stylesheet" href="~/theme/css/color3.css" title="color"><!-- Color -->
 
 </head>
 <body>
     <div>
-        @RenderBody()
+        <main>
+            <div class="pageloader-wrap" style="display: none;">
+                <div class="loader">
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__bar"></div>
+                    <div class="loader__ball"></div>
+                </div>
+            </div><!-- Pageloader Wrap -->
+            <header class="style1">
+                <div class="container">
+                    <div class="logo"><a href="#" title="Logo"><img src="~/theme/img/logo3.png" alt="logo3.png"></a></div>
+                    <nav>
+                        <div>
+                            
+                            <a class="thm-btn brd-rd40" href="#" title="">تماس با ما</a>
+                            <ul>
+                                <li class="menu-item-has-children"><a href="##" title="">صفحه اصلی</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه اصلی 1</a></li>
+                                        <li><a href="#" title="">صفحه اصلی 2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="##" title="">بلاگ</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه اصلی</a></li>
+                                        <li><a href="#" title="">صفحه مطلب</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">رویداد ها</a></li>
+                                <li><a href="#" title="">کمک مالی </a></li>
+                                <li class="menu-item-has-children"><a href="##" title="">صفحات</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه تیم 1</a></li>
+                                        <li><a href="#" title="">صفحه تیم 2</a></li>
+                                        <li><a href="#" title="">نمونه کار ها</a></li>
+                                        <li><a href="#" title="">خدمات ما</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">درباره ما</a></li>
+                                <li><a href="#" title="">تماس با ما</a></li>
+                                                            <li class="menu-item-has-children"><a href="##" title="">منو</a>
+                                    <ul>
+                                        <li><a href="#" title="">منو اصلی 1</a></li>
+                                        <li><a href="#" title="">منوی اصلی 2</a></li>
+                                        <li class="menu-item-has-children"><a href="##" title="">منوی اصلی 3</a>
+                                            <ul>
+                                                <li><a href="#" title="">زیرمنوی 1</a></li>
+                                                <li><a href="#" title="">زیر منوی 2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header><!-- Header -->
+            <div class="rspn-hdr">
+                <div class="rspn-mdbr">
+                    <ul class="rspn-scil">
+                        <li><a href="##" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="##" title="فیسبوک" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="##" title="لینکدین" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="##" title="گوگل پلاس" target="_blank"><i class="fa fa-google-plus"></i></a></li>                   
+                    </ul>
+                    <form class="rspn-srch">
+                        <input type="text" placeholder="‌‌ کلید واژه را وارد کنید ... "> 
+                        <button type="submit"> <i class="fa fa-search"> </i> </button>
+                    </form>
+                </div>
+                <div class="lg-mn">
+                    <div class="logo"><a href="#" title="Logo"> <img src="~/theme/img/logo2.png" alt="logo2.png"> </a> </div>
+                    <div class="rspn-cnt">
+                        <span><i class="fa fa-envelope thm-clr"></i><a href="##" title=""> info@mail.com </a></span>
+                        <span><i class="fa fa-phone thm-clr"></i> 123-456-789 </span>
+                    </div>
+                    <span class="rspn-mnu-btn"> <i class="fa fa-list-ul"></i> </span>
+                </div>
+                <div class="rsnp-mnu ps">
+                    <span class="rspn-mnu-cls"> <i class="fa fa-times"></i> </span>
+                    <ul>
+                                <li class="menu-item-has-children"><a href="##" title="">صفحه اصلی</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه اصلی 1</a></li>
+                                        <li><a href="#" title="">صفحه اصلی 2</a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="menu-item-has-children"><a href="##" title="">بلاگ</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه اصلی</a></li>
+                                        <li><a href="#" title="">صفحه مطلب</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">رویداد ها</a></li>
+                                <li><a href="#" title="">کمک مالی </a></li>
+                                <li class="menu-item-has-children"><a href="##" title="">صفحات</a>
+                                    <ul>
+                                        <li><a href="#" title="">صفحه تیم 1</a></li>
+                                        <li><a href="#" title="">صفحه تیم 2</a></li>
+                                        <li><a href="#" title="">نمونه کار ها</a></li>
+                                        <li><a href="#" title="">خدمات ما</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">درباره ما</a></li>
+                                <li><a href="#" title="">تماس با ما</a></li>
+                                                            <li class="menu-item-has-children"><a href="##" title="">منو</a>
+                                    <ul>
+                                        <li><a href="#" title="">منو اصلی 1</a></li>
+                                        <li><a href="#" title="">منوی اصلی 2</a></li>
+                                        <li class="menu-item-has-children"><a href="##" title="">منوی اصلی 3</a>
+                                            <ul>
+                                                <li><a href="#" title="">زیرمنوی 1</a></li>
+                                                <li><a href="#" title="">زیر منوی 2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                <div class="ps__rail-x" style="left: 0px; top: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; left: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div><!-- Responsive Menu -->
+            </div><!-- Responsive Header -->
+
+            @RenderBody()
+
+            <footer>
+                <div class="gap top-spac70 drk-bg2 remove-bottom">
+                    <div class="container">
+                        <div class="footer-data">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-12 col-lg-4">
+                                    <div class="wdgt-box style2">
+                                        <div class="logo"><a href="#" title="Logo"><img src="~/theme/img/logo2.png" alt="logo2.png"></a></div>
+                                        <p>مرکز اسلامی <b>جامعه</b> در سال 1373 با هدف خدمت به جامعه اسلامی تشکیل شده است.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12 col-lg-8">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4 col-lg-4">
+                                            <div class="wdgt-box">
+                                                <h4>لینک های مفید</h4>
+                                                <ul>
+                                                    <li><a href="##" title="">بلاگ</a></li>
+                                                    <li><a href="##" title="">خدمات</a></li>
+                                                    <li><a href="##" title="">کمک مالی</a></li>
+                                                    <li><a href="##" title="">تیم</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-lg-4">
+                                            <div class="wdgt-box">
+                                                <h4>صفحات سایت</h4>
+                                                <ul>
+                                                    <li><a href="##" title="">صفحه اصلی</a></li>
+                                                    <li><a href="##" title="">مطالب سایت</a></li>
+                                                    <li><a href="##" title="">تالار گفتمان</a></li>
+                                                    <li><a href="##" title="">درباره ما</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-lg-4">
+                                            <div class="wdgt-box">
+                                                <h4>تماس با ما</h4>
+                                                <ul class="cont-lst">
+                                                    <li><i class="flaticon-location-pin"></i>خیابان مرکزی - بخش اصلی - ساختمان مرکزی - مرکز اسلامی جامعه</li>
+                                                    <li><i class="flaticon-call"></i>123-456-789</li>
+                                                    <li><i class="flaticon-email"></i><a href="##" title="">info@mail.com</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- Footer Data -->
+                        <div class="bottom-bar">
+                            <p>1398 | تمامی حقوق برای جامعه مفحوظ میباشد</p>
+                            <div class="scl">
+                                <a href="##" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="##" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="##" title="گوگل پلاس" target="_blank"><i class="fa fa-google-plus"></i></a>
+                                <a href="##" title="فیسبوک" target="_blank"><i class="fa fa-facebook"></i></a>
+                            </div>
+                        </div><!-- Bottom Bar -->
+                    </div>
+                </div>
+            </footer>
+        </main>
+        
     </div>
 
-    <script src="~/js/jquery.min.js.download"></script>
-    <script src="~/js/bootstrap.min.js.download"></script>
-    <script src="~/js/downCount.js.download"></script>
-    <script src="~/js/fancybox.min.js.download"></script>
-    <script src="~/js/isotope.pkgd.min.js.download"></script>
-    <script src="~/js/perfectscrollbar.min.js.download"></script>
-    <script src="~/js/wow.min.js.download"></script>
-    <script src="~/js/owl.carousel.min.js.download"></script>
-    <script src="~/js/jquery.circliful.min.js.download"></script>
-    <script src="~/js/custom-scripts.js.download"></script>
+    <script src="~/theme/js/jquery.min.js"></script>
+    <script src="~/theme/js/bootstrap.min.js"></script>
+    <script src="~/theme/js/downCount.js"></script>
+    <script src="~/theme/js/fancybox.min.js"></script>
+    <script src="~/theme/js/isotope.pkgd.min.js"></script>
+    <script src="~/theme/js/perfectscrollbar.min.js"></script>
+    <script src="~/theme/js/wow.min.js"></script>
+    <script src="~/theme/js/owl.carousel.min.js"></script>
+    <script src="~/theme/js/jquery.circliful.min.js"></script>
+    <script src="~/theme/js/custom-scripts.js"></script>
 </body>
 </html>
