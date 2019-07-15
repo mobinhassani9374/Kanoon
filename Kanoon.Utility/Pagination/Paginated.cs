@@ -13,5 +13,7 @@ namespace Kanoon.Utility.Pagination
         public int PageSize { get; set; }
 
         public int TotalPages { get; set; }
+
+        public int TotalRows { get; set; }
     }
 }

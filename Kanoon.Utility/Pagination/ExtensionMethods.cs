@@ -7,13 +7,30 @@ namespace Kanoon.Utility.Pagination
 {
     public static class ExtensionMethods
     {
-        public static IQueryable<T> ToPaginated<T>(this IQueryable<T> query, PaginationSearchCritria searchCritria)
+        public static Paginated<T> ToPaginated<T>(this IQueryable<T> query, PaginationSearchCritria searchCritria)
         {
-            query = query
-                 .Skip((searchCritria.PageNumber - 1) * searchCritria.PageSize)
-                 .Take(searchCritria.PageNumber);
+            var result = new Paginated<T>();
 
-            return query;
+            result.TotalRows = query.Count();
+
+            query = query
+                .Skip((searchCritria.PageNumber - 1) * searchCritria.PageSize)
+                .Take(searchCritria.PageNumber);
+
+            result.Data = query.ToList();
+
+            result.CurrentPage = searchCritria.PageNumber;
+
+            result.PageSize = searchCritria.PageSize;
+
+            result.TotalPages = result.TotalRows / searchCritria.PageSize;
+
+            if (result.TotalRows % searchCritria.PageSize != 0)
+            {
+                result.TotalPages++;
+            }
+
+            return result;
         }
     }
 }
