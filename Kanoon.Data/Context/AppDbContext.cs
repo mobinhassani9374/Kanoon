@@ -17,6 +17,8 @@ namespace Kanoon.Data.Context
 
         public DbSet<LocationMember> LocationMembers { get; set; }
 
+        public DbSet<Heiat> Heiats { get; set; }
+
         public ServiceResult Save()
         {
             if (this.SaveChanges() > 0) return ServiceResult.Okay();

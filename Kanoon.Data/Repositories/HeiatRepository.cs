@@ -9,7 +9,7 @@ namespace Kanoon.Data.Repositories
     {
         public HeiatRepository(AppDbContext context) : base(context)
         {
-
+          
         }
     }
 }
