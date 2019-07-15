@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Kanoon.Bootstraper\Kanoon.Bootstraper.csproj" />
     <ProjectReference Include="..\Kanoon.Data\Kanoon.Data.csproj" />
   </ItemGroup>
 

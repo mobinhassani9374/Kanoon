@@ -38,6 +38,8 @@ namespace Kanoon
             services.AddScoped<Data.BaseRepository<Location>>();
             services.AddScoped<HeiatRepository>();
 
+            Bootstraper.Mapping.Initializer.Initial();
+
             services.AddMvc();
         }
 
