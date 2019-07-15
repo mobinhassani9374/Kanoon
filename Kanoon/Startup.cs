@@ -11,6 +11,7 @@ using Kanoon.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Kanoon.Data;
 using Kanoon.DomainModels.Entities;
+using Kanoon.Data.Repositories;
 
 namespace Kanoon
 {
@@ -34,7 +35,8 @@ namespace Kanoon
             });
 
             // add repository
-            services.AddScoped<BaseRepository<Location>>();
+            services.AddScoped<Data.BaseRepository<Location>>();
+            services.AddScoped<HeiatRepository>();
 
             services.AddMvc();
         }
