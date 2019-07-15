@@ -9,12 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Kanoon.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BaseController<TEntity> : Controller where TEntity : BaseEntity
+    public class BaseController : Controller
     {
-        protected readonly BaseRepository<TEntity> _repo;
-        public BaseController(BaseRepository<TEntity> repo)
-        {
-            _repo = repo;
-        }
+
     }
 }
