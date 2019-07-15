@@ -20,7 +20,7 @@ namespace Kanoon.DomainModels.Entities
         /// <summary>
         /// شماره ثبت
         /// </summary>
-        public int RegistrationNumber { get; set; }
+        public int? RegistrationNumber { get; set; }
 
         /// <summary>
         /// محل ثبت
@@ -232,12 +232,12 @@ namespace Kanoon.DomainModels.Entities
         /// <summary>
         /// آمار مستمعین - میزان جمعیت تقریبی
         /// </summary>
-        public int ApproximatePopulation { get; set; }
+        public int? ApproximatePopulation { get; set; }
 
         /// <summary>
         /// آمار مستمعین - میزان جمعیت در ویژه برنامه
         /// </summary>
-        public int PopulationsInSpecialProgram { get; set; }
+        public int? PopulationsInSpecialProgram { get; set; }
 
         /// <summary>
         /// مشخصات مکان برگزاری جلسه - ثابت
@@ -272,17 +272,17 @@ namespace Kanoon.DomainModels.Entities
         /// <summary>
         /// مشخصات مکان برگزاری جلسه - به متراژ کل
         /// </summary>
-        public int TotalArea { get; set; }
+        public int? TotalArea { get; set; }
 
         /// <summary>
         /// مشخصات مکان برگزاری جلسه - متراژ برادران
         /// </summary>
-        public int TotalBrother { get; set; }
+        public int? TotalBrother { get; set; }
 
         /// <summary>
         /// مشخصات مکان برگزاری جلسه - متراژ خواهران
         /// </summary>
-        public int TotalSister { get; set; }
+        public int? TotalSister { get; set; }
 
         /// <summary>
         /// نحوه جذب منابع - کمک های مردمی
