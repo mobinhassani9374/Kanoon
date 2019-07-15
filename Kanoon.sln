@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanoon", "Kanoon\Kanoon.csproj", "{93E42BD5-256F-4F1D-A46C-203F84FEDB14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.DomainModels", "Kanoon.DomainModels\Kanoon.DomainModels.csproj", "{B6EFE8BA-B5AD-4374-AFBF-4F6BC5388D32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanoon.DomainModels", "Kanoon.DomainModels\Kanoon.DomainModels.csproj", "{B6EFE8BA-B5AD-4374-AFBF-4F6BC5388D32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.Utility", "Kanoon.Utility\Kanoon.Utility.csproj", "{1EAA559C-CEEA-4142-8933-2BDFB906A21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanoon.Utility", "Kanoon.Utility\Kanoon.Utility.csproj", "{1EAA559C-CEEA-4142-8933-2BDFB906A21F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.Data", "Kanoon.Data\Kanoon.Data.csproj", "{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kanoon.Data", "Kanoon.Data\Kanoon.Data.csproj", "{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kanoon.Bootstraper", "Kanoon.Bootstraper\Kanoon.Bootstraper.csproj", "{5B892C23-66E3-4258-B65B-E9FB367DC197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAA7D674-CFD0-445D-ADF2-DF8379FE4B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B892C23-66E3-4258-B65B-E9FB367DC197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B892C23-66E3-4258-B65B-E9FB367DC197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B892C23-66E3-4258-B65B-E9FB367DC197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B892C23-66E3-4258-B65B-E9FB367DC197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
