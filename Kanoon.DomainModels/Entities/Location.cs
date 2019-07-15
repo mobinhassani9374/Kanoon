@@ -12,5 +12,7 @@ namespace Kanoon.DomainModels.Entities
         public string Title { get; set; }
 
         public ICollection<LocationMember> Members { get; set; }
+
+        public ICollection<Heiat> Heiats { get; set; }
     }
 }

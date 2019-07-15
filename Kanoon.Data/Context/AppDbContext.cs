@@ -43,6 +43,13 @@ namespace Kanoon.Data.Context
             modelBuilder.Entity<LocationMember>()
                 .Property(c => c.FullName)
                 .HasMaxLength(200);
+
+            // heiat
+            modelBuilder.Entity<Heiat>().HasOne(c => c.Location)
+                .WithMany(c => c.Heiats)
+                .HasForeignKey(c => c.LocationId)
+                .OnDelete(DeleteBehavior
+                .Cascade);
         }
     }
 }

@@ -174,5 +174,204 @@ namespace Kanoon.DomainModels.Entities
         /// </summary>
         public bool AndOtherSchedule { get; set; }
 
+        /// <summary>
+        /// نحوه اطلاع رسانی - شماره سامانه پیامکی
+        /// </summary>
+        public string SMSSystemNumber { get; set; }
+
+        /// <summary>
+        /// نحوه اطلاع رسانی - آدرس سایت
+        /// </summary>
+        public string SiteAddress { get; set; }
+
+        /// <summary>
+        /// نحوه اطلاع رسانی - آدرس تلگرام
+        /// </summary>
+        public string TelegramAddress { get; set; }
+
+        /// <summary>
+        /// نحوه اطلاع رسانی - آدرس اینستاگرام
+        /// </summary>
+        public string InstagramAddress { get; set; }
+
+        /// <summary>
+        /// نحوه اطلاع رسانی - دارای تابلوی اطلاع رسانی
+        /// </summary>
+        public bool IsNotificationBar { get; set; }
+
+        /// <summary>
+        /// مجریان برنامه - قاری
+        /// </summary>
+        public string Qhari { get; set; }
+
+        /// <summary>
+        /// مجریان برنامه - سخنران
+        /// </summary>
+        public string Sokhanran { get; set; }
+
+        /// <summary>
+        /// مجریان برنامه - مداح
+        /// </summary>
+        public string Maddah { get; set; }
+
+        /// <summary>
+        /// مجریان برنامه - برنامه ویژه
+        /// </summary>
+        public string SpecialApp { get; set; }
+
+        /// <summary>
+        /// آمار مستمعین - برادران
+        /// </summary>
+        public bool Brothers { get; set; }
+
+        /// <summary>
+        /// آمار مستمعین - خواهران
+        /// </summary>
+        public bool Sisters { get; set; }
+
+        /// <summary>
+        /// آمار مستمعین - میزان جمعیت تقریبی
+        /// </summary>
+        public int ApproximatePopulation { get; set; }
+
+        /// <summary>
+        /// آمار مستمعین - میزان جمعیت در ویژه برنامه
+        /// </summary>
+        public int PopulationsInSpecialProgram { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - ثابت
+        /// </summary>
+        public bool Const { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - سیار
+        /// </summary>
+        public bool Mobile { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - مسجد
+        /// </summary>
+        public bool Mosque { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - حسینیه
+        /// </summary>
+        public bool Husseinieh { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - ساختمان خصوصی
+        /// </summary>
+        public bool PrivateBuilding { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - فضای عمومی موقت
+        /// </summary>
+        public bool TemporaryPublicSpace { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - به متراژ کل
+        /// </summary>
+        public int TotalArea { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - متراژ برادران
+        /// </summary>
+        public int TotalBrother { get; set; }
+
+        /// <summary>
+        /// مشخصات مکان برگزاری جلسه - متراژ خواهران
+        /// </summary>
+        public int TotalSister { get; set; }
+
+        /// <summary>
+        /// نحوه جذب منابع - کمک های مردمی
+        /// </summary>
+        public bool PopularSupport { get; set; }
+
+        /// <summary>
+        /// نحوه جذب منابع -  بودجه ثابت سازمان یا اداره
+        /// </summary>
+        public bool FixedBudgetOrganizationOrOffice { get; set; }
+
+        /// <summary>
+        /// نحوه جذب منابع -  بودجه ثابت سازمان یا اداره
+        /// </summary>
+        public bool EconomicActivitiesInTheField { get; set; }
+
+        /// <summary>
+        /// فعالیت های جانبی - اردویی
+        /// </summary>
+        public string TheCamp { get; set; }
+
+        /// <summary>
+        /// فعالیت های جانبی - فرهنگی
+        /// </summary>
+        public string Cultural { get; set; }
+
+        /// <summary>
+        /// فعالیت های جانبی - آموزشی
+        /// </summary>
+        public string Educational { get; set; }
+
+        /// <summary>
+        /// فعالیت های جانبی - خیریه 
+        /// </summary>
+        public string Charity { get; set; }
+
+        /// <summary>
+        /// فعالیت های جانبی - سایر
+        /// </summary>
+        public string Others { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - منطقه
+        /// </summary>
+        public string Area { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - ناحیه
+        /// </summary>
+        public string LocArea { get; set; }
+        /// <summary>
+        /// موقعیت مکان - محله
+        /// </summary>
+        public string TheNeighbourhood { get; set; }
+        /// <summary>
+        /// موقعیت مکان - خیابان اصلی
+        /// </summary>
+        /// <summary>
+        /// موقعیت مکان - منطقه
+        /// </summary>
+        public string TheMainStreet { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - خیابان فرعی
+        /// </summary>
+        /// </summary>
+        public string AuxiliaryRoad { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - کوچه
+        /// </summary>
+        /// </summary>
+        public string Alley { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - پلاک
+        /// </summary>
+        /// </summary>
+        public string Plaque { get; set; }
+
+        /// <summary>
+        /// موقعیت مکان - پلاک
+        /// </summary>
+        /// </summary>
+        public string EssentialRequirementsOfTheBoard { get; set; }
+
+        public Location Location { get; set; }
+
+        public int LocationId { get; set; }
+
     }
 }
