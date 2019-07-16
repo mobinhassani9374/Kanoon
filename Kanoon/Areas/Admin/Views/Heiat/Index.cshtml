@@ -711,9 +711,21 @@
                     url:'/Admin/Heiat/ApiCreate',
                     method:'Post',
                     data:app.model,
-                    success:function(response) {
-                        l.stop();
-                    }
+                    success:function(response){                     
+                        if(response.isSuccess) {
+                            toastr.success(response.message)
+                            $('#modalAdd').modal('hide')
+                            app.getData()
+                        }
+                        else {
+                            toastr.error(response.message)                            
+                        }
+                        l.stop()                        
+                    },
+                    error:function(error){
+                        toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                        l.stop()
+                    }  
                 })              
             },
             clearModel:function(){
@@ -863,6 +875,9 @@
                     // انتخاب محله 
                     LocationId:''
                 }
+            },
+            getData:function(){
+                
             }
         }
     })
