@@ -69,7 +69,7 @@
                     <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label>تاریخ تاسیس  هییٔت را وارد کنید</label>
-                            <input id="time" v-model="model.EstablishedYear" type="text" class="form-control" placeholder="تاریخ تاسیس هییٔت">
+                            <input id="time"  type="text" class="form-control" placeholder="تاریخ تاسیس هییٔت">
                         </div>
                     </div>
                     <div class="col-md-3 col-12">
@@ -704,6 +704,7 @@
                     toastr.error('محله ای انتخاب نکرده اید ');
                     return
                 }
+                app.model.EstablishedYear=$('#time').val()
                 var l = Ladda.create(document.querySelector('[data-role="addHeiat"]'));
                 l.start(); 
                 $.ajax({
