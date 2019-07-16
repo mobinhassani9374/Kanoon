@@ -514,7 +514,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">        
-                <button type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
+                <button v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
                     <span  class="ladda-label">ثبت اطلاعات</span>
                 </button>
             </div>
@@ -691,6 +691,21 @@
                     keyboard: false
                 })
             },
+            saveHeiat:function() {
+                if(app.model.Name=='') {
+                    toastr.error('نام هییٔت نمی تواند خالی باشد ');
+                    return
+                }
+                if(app.model.LocationId=='') {
+                    toastr.error('محله ای انتخاب نکرده اید ');
+                    return
+                }
+                var l = Ladda.create(document.querySelector('[data-role="addHeiat"]'));
+                l.start(); 
+                setTimeout(function(){
+                    l.stop();
+                },2000)               
+            }
         }
     })
 
