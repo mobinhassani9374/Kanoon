@@ -686,10 +686,14 @@
                         }
                     })
                 }
+                this.clearModel();
                 $('#modalAdd').modal({
                     backdrop: 'static',
                     keyboard: false
                 })
+                setTimeout(function(){
+                    $("#modalAdd .modal-body").animate({ scrollTop: 0 })
+                },200)
             },
             saveHeiat:function() {
                 if(app.model.Name=='') {
@@ -710,6 +714,154 @@
                         l.stop();
                     }
                 })              
+            },
+            clearModel:function(){
+                app.model={
+                    // نام هییٔت
+                    Name:'',
+                    // تاریخ ثبت
+                    EstablishedYear:'',
+                    // شماره ثبت
+                    RegistrationNumber:'',
+                    // محل ثبت
+                    RegistrationLocation:'',
+                    // نام مسئول
+                    ManagerName:'',
+                    // شماره تماس مسئول
+                    ManagerPhoneNumber:'',
+                    //  شماره تماس یکی از امنا
+                    ContactPhoneNumber:'',
+                    // اعضای هییت امنا
+                    ContactNames:'',
+                    // مسیٔول رسانه
+                    MediaManagerFullName:'',
+                    // شماره تماس مسیٔول رسانه
+                    MediaManagerPhoneNumber:'' , 
+                    // نحوه شکل گیری - محله ای
+                    IsLocal:false, 
+                    //  نحوه شکل گیری - قومیتی
+                    IsEthnicity:false,           
+                    //  نحوه شکل گیری - صنفی
+                    IsGuild:false,
+                    //  نحوه شکل گیری - اداری یا سازمانی
+                    IsOfficial:false,
+                    // نحوه عزاداری - سینه زنی
+                    IsBreastplate:false,
+                    //  نحوه عزاداری - زنجیر زنی
+                    IsChainsaw:false,
+                    // نحوه عزاداری - تعزیه خوانی
+                    IsPassionReading:false,
+                    // نحوه عزاداری - شبیه خوانی
+                    IsResemblance:false,
+                    //  نحوه عزاداری - و یا
+                    AndOther:'' ,
+                    // زمانبندی و شرح اجرای برنامه - هفتگی
+                    IsWeekly:false,
+                    // زمانبندی و شرح اجرای برنامه - روز هفته
+                    WeekDay:'',
+                    // زمانبندی و شرح اجرای برنامه - ماهانه
+                    IsMonthly:false,
+                    // زمانبندی و شرح اجرای برنامه - روز ماه
+                    MonthDay:'',
+                    //  زمانبندی و شرح اجرای برنامه - سالانه
+                    IsYearly:false,
+                    // زمانبندی و شرح اجرای برنامه - روز سال
+                    YearDay:'',
+                    // زمانبندی و شرح اجرای برنامه - ماسبتی
+                    IsDeally:false,
+                    // زمانبندی و شرح اجرای برنامه - قرآت
+                    IsQuran:false,
+                    // زمانبندی و شرح اجرای برنامه - دعا
+                    IsPray:false,
+                    // زمانبندی و شرح اجرای برنامه - نام دعا
+                    PrayName:false,
+                    // زمانبندی و شرح اجرای برنامه - دارای سخنران
+                    IsShokhanran:false,
+                    //  زمانبندی و شرح اجرای برنامه - دارای مداحی
+                    IsEagerness:false,
+                    // زمانبندی و شرح اجرای برنامه - دارای پذیرایی
+                    IsCatering:false,
+                    // زمانبندی و شرح اجرای برنامه - ویا
+                    AndOtherSchedule:'',
+                    //  نحوه اطلاع رسانی - شماره سامانه پیامکی
+                    SMSSystemNumber:'',
+                    // نحوه اطلاع رسانی - آدرس سایت
+                    SiteAddress:'',
+                    // نحوه اطلاع رسانی - آدرس تلگرام
+                    TelegramAddress:'',
+                    // نحوه اطلاع رسانی - آدرس اینستاگرام
+                    InstagramAddress:'',
+                    // نحوه اطلاع رسانی - دارای تابلوی اطلاع رسانی
+                    IsNotificationBar:false,
+                    // مجریان برنامه - قاری
+                    Qhari:'',
+                    // مجریان برنامه - سخنران
+                    Sokhanran:'',
+                    // مجریان برنامه - مداح
+                    Maddah:'',
+                    // مجریان برنامه - برنامه ویژه
+                    SpecialApp:'',
+                    //  آمار مستمعین - برادران
+                    Brothers:false,
+                    //  آمار مستمعین - خواهران
+                    Sisters:false,
+                    // آمار مستمعین - میزان جمعیت تقریبی
+                    ApproximatePopulation:'',
+                    // آمار مستمعین - میزان جمعیت در ویژه برنامه
+                    PopulationsInSpecialProgram:'',
+                    // مشخصات مکان برگزاری جلسه - ثابت
+                    Const:false,
+                    // مشخصات مکان برگزاری جلسه - سیار
+                    Mobile:false,
+                    // مشخصات مکان برگزاری جلسه - مسجد
+                    Mosque:false,
+                    // مشخصات مکان برگزاری جلسه - حسینیه
+                    Husseinieh:false,
+                    // مشخصات مکان برگزاری جلسه - ساختمان خصوصی
+                    PrivateBuilding:false,
+                    // مشخصات مکان برگزاری جلسه - فضای عمومی موقت
+                    TemporaryPublicSpace:false,
+                    // مشخصات مکان برگزاری جلسه - به متراژ کل
+                    TotalArea:'',
+                    // مشخصات مکان برگزاری جلسه - متراژ برادران
+                    TotalBrother:'',
+                    // مشخصات مکان برگزاری جلسه - متراژ خواهران
+                    TotalSister:'',
+                    // نحوه جذب منابع - کمک های مردمی
+                    PopularSupport:false,
+                    // نحوه جذب منابع -  بودجه ثابت سازمان یا اداره
+                    FixedBudgetOrganizationOrOffice:false,
+                    // نحوه جذب منابع - فعالیتهای اقتصادی 
+                    EconomicActivitiesInTheField:false,
+                    // فعالیت های جانبی - اردویی
+                    TheCamp:'',
+                    // فعالیت های جانبی - فرهنگی
+                    Cultural:'',
+                    // فعالیت های جانبی - آموزشی
+                    Educational:'',
+                    // فعالیت های جانبی - خیریه 
+                    Charity:'',
+                    // فعالیت های جانبی - سایر
+                    Others:'',
+                    // موقعیت مکان - منطقه
+                    Area:'',
+                    // موقعیت مکان - ناحیه
+                    LocArea:'',
+                    //  موقعیت مکان - محله
+                    TheNeighbourhood:'',
+                    // موقعیت مکان - خیابان اصلی
+                    TheMainStreet:'',
+                    // موقعیت مکان - خیابان فرعی
+                    AuxiliaryRoad:'',
+                    // موقعیت مکان - کوچه
+                    Alley:'',
+                    // موقعیت مکان - پلاک
+                    Plaque:'',
+                    // نیازمندی های ضروری
+                    EssentialRequirementsOfTheBoard:'',
+                    // انتخاب محله 
+                    LocationId:''
+                }
             }
         }
     })
