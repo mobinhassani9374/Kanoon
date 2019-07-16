@@ -58,7 +58,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body" style="max-height:500px;height:400px;">
+            <div class="modal-body" style="max-height:500px;height:400px;">                
                 <div class="row">
                     <div class="col-md-3 col-12">
                         <div class="form-group">
@@ -490,6 +490,15 @@
                             <input type="number" class="form-control" v-model="model.Plaque" placeholder="پلاک">
                         </div>
                     </div>     
+                    <div class="col-md-3 col-xs-12">
+                         <div class="form-group">
+                            <label>محله را انتخاب کنید</label>
+                            <select v-model="model.LocationId" class="form-control">
+                                <option value="">محله را انتخاب کنید </option>
+                                <option v-for="item in location" :value="item.id">{{item.title}}</option>
+                            </select>
+                        </div>
+                    </div>     
                 </div>  
                 <hr />
                 <p class="font-weight-bold text-right">نیازمندی های ضروری هیئت</p> 
@@ -664,12 +673,12 @@
                 EssentialRequirementsOfTheBoard:'',
                 // انتخاب محله 
                 LocationId:''
-            }
+            } , 
+            location:[]
         }
     })
 
     $(function(){
-    
         var customOptions = {
 			placeholder: "روز / ماه / سال"
 			, twodigit: false
@@ -685,6 +694,13 @@
 			, gotoToday: true
 		}
         kamaDatepicker('time',customOptions);
+
+        $.ajax({
+            url:'/Admin/Location/ApiGet',
+            success:function(response) {
+                app.location = response;                
+            }
+        })
     })
 </script>
 
