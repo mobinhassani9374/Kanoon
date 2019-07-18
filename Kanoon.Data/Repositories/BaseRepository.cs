@@ -5,6 +5,7 @@ using Kanoon.Utility;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Kanoon.Data.Repositories
 {
@@ -51,6 +52,11 @@ namespace Kanoon.Data.Repositories
         public TEntity Find(int id)
         {
             return _context.Set<TEntity>().Find(id); ;
+        }
+
+        public IQueryable<TEntity> Where(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().AsQueryable().Where(predicate);
         }
     }
 }
