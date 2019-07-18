@@ -19,7 +19,7 @@ namespace Kanoon.Data.Repositories
         {
             var entity = Mapper.Map<TEntity>(model);
             _context.Add(entity);
-            if (_context.Save() == ServiceResult.Okay())
+            if (_context.Save().IsSuccess)
             {
                 return ServiceResult<int>.Okay(entity.Id);
             }
