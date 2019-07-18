@@ -18,6 +18,7 @@ namespace Kanoon.Data.Repositories
         public ServiceResult<int> Create<TModel>(TModel model)
         {
             var entity = Mapper.Map<TEntity>(model);
+            _context.Add(entity);
             if (_context.Save() == ServiceResult.Okay())
             {
                 return ServiceResult<int>.Okay(entity.Id);
