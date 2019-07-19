@@ -34,5 +34,13 @@ namespace Kanoon.Areas.Admin.Controllers
 
             return Ok(data);
         }
+
+        [HttpPost]
+        public IActionResult ApiEdit(HeiatModel model)
+        {
+            var result = _heiatRepository.Update(model.Id, model);
+
+            return Ok(result);
+        }
     }
 }

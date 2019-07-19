@@ -6,6 +6,7 @@ namespace Kanoon.DomainModels.Models.Heiat
 {
     public class HeiatModel
     {
+        public int Id { get; set; }
         /// <summary>
         /// نام هییت
         /// </summary>
