@@ -26,5 +26,13 @@ namespace Kanoon.Areas.Admin.Controllers
             var result = _heiatRepository.Create(model);
             return Ok(result);
         }
+
+        [HttpPost]
+        public IActionResult ApiGet(HeiatSearchModel model)
+        {
+            var data = _heiatRepository.Search(model);
+
+            return Ok(data);
+        }
     }
 }
