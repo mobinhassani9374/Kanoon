@@ -42,5 +42,12 @@ namespace Kanoon.Areas.Admin.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost]
+        public IActionResult ApiDelete(int id)
+        {
+            var result = _heiatRepository.Delete(id);
+            return Ok(result);
+        }
     }
 }
