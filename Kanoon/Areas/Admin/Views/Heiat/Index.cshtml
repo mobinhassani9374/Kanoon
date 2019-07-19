@@ -40,7 +40,7 @@
                     <td>{{item.name}}</td>
                     <td>{{item.locationTitle}}</td>
                     <td>
-                        <button data-role="deleteLocation" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
+                        <button data-role="delete" :data-id="item.id" v-on:click="deleteHeiat(item.id)" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
                             <span class="ladda-label">حذف</span>                           
                         </button>
                     </td>
@@ -689,21 +689,13 @@
                 pageSize:10,
                 totalPages: 0,
                 totalRows: 0,
-                currentPage:0,
+                currentPage:1,
                 data:[],
             } ,
             loading:true,
         },
         methods:{ 
             openModal:function() {
-                if(this.location.length==0) {
-                    $.ajax({
-                        url:'/Admin/Location/ApiGet',
-                        success:function(response) {
-                            app.location = response;                
-                        }
-                    })
-                }
                 this.clearModel();
                 $('#modalAdd').modal({
                     backdrop: 'static',
@@ -917,6 +909,43 @@
             moreData:function(){
                 this.search.pageNumber++;
                 this.getData();
+            } , 
+            deleteHeiat:function(id){               
+                swal({
+                    title: "حذف هیئت ",
+                    text: "آیا مطمئن هستید ؟؟ ",
+                    type: "warning",
+                    showCancelButton: true,                    
+                    confirmButtonText: "بله حذف کن",                  
+                    cancelButtonText: "نه منصرف شدم",
+                    closeOnConfirm: false,
+                    confirmButtonColor: "#dc3545",                  
+
+                }, function(){
+                    var l = Ladda.create(document.querySelector('[data-role="delete"][data-id="'+id+'"]'));
+                    l.start();
+                    swal.close()
+                    $.ajax({
+                        url:'/Admin/Heiat/ApiDelete/'+id,   
+                        method:'Post' ,                   
+                        success:function(response){                     
+                            if(response.isSuccess) {
+                                toastr.success(response.message)
+                                app.search.pageNumber=1;
+                                app.search.data=[];
+                                app.getData()
+                            }
+                            else {
+                                toastr.error(response.message)                            
+                            }
+                            l.stop()                        
+                        },
+                        error:function(error){
+                            toastr.error('در برقراری با سرور به مشکل خوردیم دوباره تلاش کنید ')
+                            l.stop()
+                        }          
+                    }) 
+                });
             }
         } , 
         created:function(){
@@ -940,6 +969,12 @@
 			, gotoToday: true
 		}
         kamaDatepicker('time',customOptions);
+         $.ajax({
+            url:'/Admin/Location/ApiGet',
+            success:function(response) {
+                app.location = response;                
+            }
+        })
     })
 </script>
 
