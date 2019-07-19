@@ -734,6 +734,7 @@
                             toastr.success(response.message)
                             $('#modalAdd').modal('hide')
                             app.search.pageNumber=1;
+                            app.search.data=[]
                             app.getData()
                         }
                         else {
