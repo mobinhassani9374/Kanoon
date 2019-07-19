@@ -24,6 +24,7 @@
                 <button class="btn btn-outline-dark" v-on:click="openModal()">اضافه نمودن هییٔت جدید </button>
             </div>
             <h3 class="text-muted text-center mb-3">لیست هییٔت های ثبت شده </h3>
+            <p class="text-right">تعداد کل هیئت های ثبت شده : {{search.totalRows}}</p>
             <table class="table table-striped bg-light text-center ">
             <thead>
                 <tr class="text-muted">
@@ -46,6 +47,9 @@
                 </tr>
             </tbody>
             </table>
+        </div>
+        <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0">
+            <button class="btn btn-success">نمایش اطلاعات بیشتر </button>
         </div>
     </div>
 
