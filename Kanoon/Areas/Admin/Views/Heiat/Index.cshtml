@@ -76,7 +76,7 @@
                     <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label>نام هییٔت را وارد کنید</label>
-                            <input type="text" v-model="model.Name" class="form-control" placeholder="نام هییٔت">
+                            <input type="text" v-model="model.name" class="form-control" placeholder="نام هییٔت">
                         </div>
                     </div>
                     <div class="col-md-3 col-12">
@@ -88,13 +88,13 @@
                     <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label>شماره ثبت را وارد کنید</label>
-                            <input type="number" v-model="model.RegistrationNumber" class="form-control" placeholder="شماره ثبت">
+                            <input type="number" v-model="model.registrationNumber" class="form-control" placeholder="شماره ثبت">
                         </div>
                     </div>
                     <div class="col-md-3 col-12">
                         <div class="form-group">
                             <label>محل ثبت را وارد کنید</label>
-                            <input type="text" v-model="model.RegistrationLocation" class="form-control" placeholder="محل ثبت">
+                            <input type="text" v-model="model.registrationLocation" class="form-control" placeholder="محل ثبت">
                         </div>
                     </div>
                 </div>
@@ -103,25 +103,25 @@
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>نام مسئول هییٔت را وارد کنید</label>
-                            <input type="text" v-model="model.ManagerName" class="form-control" placeholder="نام مسئول هییٔت">
+                            <input type="text" v-model="model.managerName" class="form-control" placeholder="نام مسئول هییٔت">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>شماره تماس مسئول هییٔت را وارد کنید</label>
-                            <input type="number" v-model="model.ManagerPhoneNumber" class="form-control" placeholder="شماره تماس مسئول هییٔت">
+                            <input type="number" v-model="model.managerPhoneNumber" class="form-control" placeholder="شماره تماس مسئول هییٔت">
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>شماره تماس یکی از امناء را وارد کنید</label>
-                            <input type="number" v-model="model.ContactPhoneNumber" class="form-control" placeholder="شماره تماس یکی از امناء">
+                            <input type="number" v-model="model.contactPhoneNumber" class="form-control" placeholder="شماره تماس یکی از امناء">
                         </div>
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                             <label>نام اعضای امناء را وارد کنید</label>
-                            <input type="text" v-model="model.ContactNames" class="form-control" placeholder="نام اعضای امناء">
+                            <input type="text" v-model="model.contactNames" class="form-control" placeholder="نام اعضای امناء">
                         </div>
                     </div>
                 </div> 
@@ -130,13 +130,13 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>مسئول رسانه و روابط عمومی را وارد کنید</label>
-                            <input type="text" v-model="model.MediaManagerFullName" class="form-control" placeholder="مسئول رسانه و روابط عمومی">
+                            <input type="text" v-model="model.mediaManagerFullName" class="form-control" placeholder="مسئول رسانه و روابط عمومی">
                         </div>
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>شماره تماس  را وارد کنید</label>
-                            <input type="number" v-model="model.MediaManagerPhoneNumber" class="form-control" placeholder="شماره تماس">
+                            <input type="number" v-model="model.mediaManagerPhoneNumber" class="form-control" placeholder="شماره تماس">
                         </div>
                     </div>                                     
                 </div>
@@ -145,22 +145,22 @@
                 <div class="row">                    
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsLocal" class="form-check-input" value="">محله ای
+                            <input type="checkbox" v-model="model.isLocal" class="form-check-input" value="">محله ای
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsEthnicity" class="form-check-input" value="">قومیتی
+                            <input type="checkbox" v-model="model.isEthnicity" class="form-check-input" value="">قومیتی
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsGuild" class="form-check-input" value="">صنفی
+                            <input type="checkbox" v-model="model.isGuild" class="form-check-input" value="">صنفی
                         </label>
                     </div>                                    
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsOfficial" class="form-check-input" value="">اداری یا سازمانی
+                            <input type="checkbox" v-model="model.isOfficial" class="form-check-input" value="">اداری یا سازمانی
                         </label>
                     </div>                                    
                 </div>           
@@ -169,27 +169,27 @@
                 <div class="row">                    
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsBreastplate" class="form-check-input" value=""> سینه زنی
+                            <input type="checkbox" v-model="model.isBreastplate" class="form-check-nput" value=""> سینه زنی
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsChainsaw" class="form-check-input" value="">زنجیر زنی
+                            <input type="checkbox" v-model="model.isChainsaw" class="form-check-input" value="">زنجیر زنی
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsPassionReading" class="form-check-input" value="">تعزیه خوانی
+                            <input type="checkbox" v-model="model.isPassionReading" class="form-check-input" value="">تعزیه خوانی
                         </label>
                     </div>                                    
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsResemblance" class="form-check-input" value=""> شبیه خوانی 
+                            <input type="checkbox" v-model="model.isResemblance" class="form-check-input" value=""> شبیه خوانی 
                         </label>
                     </div>   
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">                           
-                            <input type="text" v-model="model.AndOther" class="form-control" placeholder="و یا .... ">
+                            <input type="text" v-model="model.andOther" class="form-control" placeholder="و یا .... ">
                         </div>
                     </div>                                 
                 </div>   
@@ -198,11 +198,11 @@
                 <div class="row">                    
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input v-model="model.IsWeekly" type="checkbox" class="form-check-input" value="">  هفتگی
+                            <input v-model="model.isWeekly" type="checkbox" class="form-check-input" value="">  هفتگی
                         </label>
                     </div>
                     <div class="form-group mr-1">
-                        <select v-model="model.WeekDay" class="form-control">
+                        <select v-model="model.weekDay" class="form-control">
                             <option value="">روز را انتخاب کنید </option>
                             <option value="شنبه">شنبه</option>
                             <option value="یکشنبه">یکشنبه</option>
@@ -214,23 +214,23 @@
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsMonthly" class="form-check-input" value=""> ماهانه
+                            <input type="checkbox" v-model="model.isMonthly" class="form-check-input" value=""> ماهانه
                         </label>
                     </div>
                     <div class="form-group mr-1">                           
-                        <input type="text" v-model="model.MonthDay" class="form-control" placeholder="روز ماهانه">
+                        <input type="text" v-model="model.monthDay" class="form-control" placeholder="روز ماهانه">
                     </div> 
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsYearly" class="form-check-input" value="">سالانه
+                            <input type="checkbox" v-model="model.isYearly" class="form-check-input" value="">سالانه
                         </label>
                     </div>   
                      <div class="form-group mr-1">                           
-                        <input type="text" v-model="model.YearDay" class="form-control" placeholder="ایام سال">
+                        <input type="text" v-model="model.yearDay" class="form-control" placeholder="ایام سال">
                     </div>                                  
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsDeally" class="form-check-input" value=""> مناسبتی
+                            <input type="checkbox" v-model="model.isDeally" class="form-check-input" value=""> مناسبتی
                         </label>
                     </div>   
                                                     
@@ -238,34 +238,34 @@
                 <div class="row">
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsQuran" class="form-check-input" value=""> قرائت قرآن 
+                            <input type="checkbox" v-model="model.isQuran" class="form-check-input" value=""> قرائت قرآن 
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsPray" class="form-check-input" value=""> قرائت دعا - ادعیه
+                            <input type="checkbox" v-model="model.isPray" class="form-check-input" value=""> قرائت دعا - ادعیه
                         </label>
                     </div>
                     <div class="form-group mr-1">                           
-                        <input type="text" v-model="model.PrayName" class="form-control" placeholder="نام ادعیه ">
+                        <input type="text" v-model="model.prayName" class="form-control" placeholder="نام ادعیه ">
                     </div> 
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsShokhanran" class="form-check-input" value=""> سخنرانی 
+                            <input type="checkbox" v-model="model.isShokhanran" class="form-check-input" value=""> سخنرانی 
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsEagerness" class="form-check-input" value=""> مداحی 
+                            <input type="checkbox" v-model="model.isEagerness" class="form-check-input" value=""> مداحی 
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsCatering" class="form-check-input" value=""> پذیرایی 
+                            <input type="checkbox" v-model="model.isCatering" class="form-check-input" value=""> پذیرایی 
                         </label>
                     </div>
                     <div class="form-group mr-1">                           
-                        <input type="text" v-model="model.AndOtherSchedule" class="form-control" placeholder="و یا ...">
+                        <input type="text" v-model="model.andOtherSchedule" class="form-control" placeholder="و یا ...">
                     </div>
                 </div>  
                 <hr />
@@ -274,31 +274,31 @@
                      <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>سامانه پیامکی (شماره)  را وارد کنید</label>
-                            <input type="number" v-model="model.SMSSystemNumber" class="form-control" placeholder="سامانه پیامکی (شماره)">
+                            <input type="number" v-model="model.sMSSystemNumber" class="form-control" placeholder="سامانه پیامکی (شماره)">
                         </div>
                     </div> 
                      <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>آدرس سایت  را وارد کنید</label>
-                            <input type="text" v-model="model.SiteAddress" class="form-control" placeholder="www.ferdow110.ir">
+                            <input type="text" v-model="model.siteAddress" class="form-control" placeholder="www.ferdow110.ir">
                         </div>
                     </div> 
                      <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>آدرس تلگرام  را وارد کنید</label>
-                            <input type="text" v-model="model.TelegramAddress" class="form-control" placeholder="آدرس تلگرام">
+                            <input type="text" v-model="model.telegramAddress" class="form-control" placeholder="آدرس تلگرام">
                         </div>
                     </div> 
                      <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>آدرس اینستاگرام  را وارد کنید</label>
-                            <input type="text" v-model="model.InstagramAddress" class="form-control" placeholder="آدرس اینستاگرام">
+                            <input type="text" v-model="model.instagramAddress" class="form-control" placeholder="آدرس اینستاگرام">
                         </div>
                     </div> 
                      <div class="col-md-4 col-xs-12 d-flex">
                         <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.IsNotificationBar" class="form-check-input" value=""> تابلوی اطلاع رسانی ثابت یا سیار
+                            <input type="checkbox" v-model="model.isNotificationBar" class="form-check-input" value=""> تابلوی اطلاع رسانی ثابت یا سیار
                         </label>
                     </div>
                     </div> 
@@ -309,25 +309,25 @@
                      <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>نام قاری  را وارد کنید</label>
-                            <input type="text" v-model="model.Qhari" class="form-control" placeholder="نام قاری">
+                            <input type="text" v-model="model.qhari" class="form-control" placeholder="نام قاری">
                         </div>
                     </div> 
                      <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>نام سخنران  را وارد کنید</label>
-                            <input type="text" v-model="model.Sokhanran" class="form-control" placeholder="نام سخنران">
+                            <input type="text" v-model="model.sokhanran" class="form-control" placeholder="نام سخنران">
                         </div>
                     </div> 
                      <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>نام مداح  را وارد کنید</label>
-                            <input type="text" v-model="model.Maddah" class="form-control" placeholder="نام مداح">
+                            <input type="text" v-model="model.maddah" class="form-control" placeholder="نام مداح">
                         </div>
                     </div> 
                      <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>و یا ویژه برنامه  را وارد کنید</label>
-                            <input type="text" v-model="model.SpecialApp" class="form-control" placeholder="و یا ویژه برنامه">
+                            <input type="text" v-model="model.specialApp" class="form-control" placeholder="و یا ویژه برنامه">
                         </div>
                     </div> 
                 </div>     
@@ -336,12 +336,12 @@
                 <div class="row">
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Brothers" class="form-check-input" value=""> خواهران
+                            <input type="checkbox" v-model="model.brothers" class="form-check-input" value=""> خواهران
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Sisters" class="form-check-input" value=""> برادران
+                            <input type="checkbox" v-model="model.sisters" class="form-check-input" value=""> برادران
                         </label>
                     </div>
                 </div> 
@@ -349,13 +349,13 @@
                      <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>میزان جمعیت تقریبی  را وارد کنید</label>
-                            <input type="number" v-model="model.ApproximatePopulation" class="form-control" placeholder="میزان جمعیت تقریبی">
+                            <input type="number" v-model="model.approximatePopulation" class="form-control" placeholder="میزان جمعیت تقریبی">
                         </div>
                     </div> 
                      <div class="col-md-6 col-xs-12">
                         <div class="form-group">
                             <label>میزان جمعیت در ویژه برنامه ها  را وارد کنید</label>
-                            <input type="number" v-model="model.PopulationsInSpecialProgram" class="form-control" placeholder="میزان جمعیت در ویژه برنامه ها">
+                            <input type="number" v-model="model.populationsInSpecialProgram" class="form-control" placeholder="میزان جمعیت در ویژه برنامه ها">
                         </div>
                     </div>  
                 </div>     
@@ -364,44 +364,44 @@
                 <div class="row">
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Const" class="form-check-input" value=""> ثابت
+                            <input type="checkbox" v-model="model.const" class="form-check-input" value=""> ثابت
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Mobile" class="form-check-input" value=""> سیار
+                            <input type="checkbox" v-model="model.mobile" class="form-check-input" value=""> سیار
                         </label>
                     </div>
                 </div> 
                 <div class="row">
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Mosque" class="form-check-input" value=""> مسجد
+                            <input type="checkbox" v-model="model.mosque" class="form-check-input" value=""> مسجد
                         </label>
                     </div>
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.Husseinieh" class="form-check-input" value=""> حسینیه
+                            <input type="checkbox" v-model="model.husseinieh" class="form-check-input" value=""> حسینیه
                         </label>
                     </div>
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.PrivateBuilding" class="form-check-input" value=""> ساختمان خصوصی 
+                            <input type="checkbox" v-model="model.privateBuilding" class="form-check-input" value=""> ساختمان خصوصی 
                         </label>
                     </div>
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.TemporaryPublicSpace" class="form-check-input" value="">  فضای عمومی موقت 
+                            <input type="checkbox" v-model="model.temporaryPublicSpace" class="form-check-input" value="">  فضای عمومی موقت 
                         </label>
                     </div>
                     <div class="form-group mr-1">                           
-                        <input type="number" v-model="model.TotalArea" style="width: 100px;" class="form-control" placeholder="به متراژ کل">
+                        <input type="number" v-model="model.totalArea" style="width: 100px;" class="form-control" placeholder="به متراژ کل">
                     </div> 
                     <div class="form-group mr-1">                           
-                        <input type="number" v-model="model.TotalBrother" style="width: 100px;" class="form-control" placeholder=" متراژ برادران">
+                        <input type="number" v-model="model.totalBrother" style="width: 100px;" class="form-control" placeholder=" متراژ برادران">
                     </div> 
                     <div class="form-group mr-1">                           
-                        <input type="number" v-model="model.TotalSister" style="width: 100px;" class="form-control" placeholder=" متراژ خواهران">
+                        <input type="number" v-model="model.totalSister" style="width: 100px;" class="form-control" placeholder=" متراژ خواهران">
                     </div> 
                 </div> 
                 <hr />
@@ -409,17 +409,17 @@
                 <div class="row">
                      <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.PopularSupport" class="form-check-input" value=""> کمک های مردمی
+                            <input type="checkbox" v-model="model.popularSupport" class="form-check-input" value=""> کمک های مردمی
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.FixedBudgetOrganizationOrOffice" class="form-check-input" value=""> بودجه ثابت سازمان یا اداره
+                            <input type="checkbox" v-model="model.fixedBudgetOrganizationOrOffice" class="form-check-input" value=""> بودجه ثابت سازمان یا اداره
                         </label>
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" v-model="model.EconomicActivitiesInTheField" class="form-check-input" value=""> فعالیت های اقتصادی در زمینه
+                            <input type="checkbox" v-model="model.economicActivitiesInTheField" class="form-check-input" value=""> فعالیت های اقتصادی در زمینه
                         </label>
                     </div>
                 </div>   
@@ -429,31 +429,31 @@
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label>اردویی  را وارد کنید</label>
-                            <input type="text" v-model="model.TheCamp" class="form-control" placeholder="اردویی">
+                            <input type="text" v-model="model.theCamp" class="form-control" placeholder="اردویی">
                         </div>
                     </div>  
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label>فرهنگی  را وارد کنید</label>
-                            <input type="text" v-model="model.Cultural" class="form-control" placeholder="فرهنگی">
+                            <input type="text" v-model="model.cultural" class="form-control" placeholder="فرهنگی">
                         </div>
                     </div>  
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label>آموزشی  را وارد کنید</label>
-                            <input type="text" v-model="model.Educational" class="form-control" placeholder="آموزشی">
+                            <input type="text" v-model="model.educational" class="form-control" placeholder="آموزشی">
                         </div>
                     </div>  
                     <div class="col-md-2 col-xs-12">
                         <div class="form-group">
                             <label>خیریه  را وارد کنید</label>
-                            <input type="text" v-model="model.Charity" class="form-control" placeholder="خیریه">
+                            <input type="text" v-model="model.charity" class="form-control" placeholder="خیریه">
                         </div>
                     </div>  
                     <div class="col-md-4 col-xs-12">
                         <div class="form-group">
                             <label>سایر  را وارد کنید</label>
-                            <input type="text" v-model="model.Others" class="form-control" placeholder="سایر">
+                            <input type="text" v-model="model.others" class="form-control" placeholder="سایر">
                         </div>
                     </div>  
                 </div>  
@@ -464,49 +464,49 @@
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>منطقه  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.Area" placeholder="منطقه">
+                            <input type="text" class="form-control" v-model="model.area" placeholder="منطقه">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>ناحیه  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.LocArea" placeholder="ناحیه">
+                            <input type="text" class="form-control" v-model="model.locArea" placeholder="ناحیه">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>محله  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.TheNeighbourhood" placeholder="محله">
+                            <input type="text" class="form-control" v-model="model.theNeighbourhood" placeholder="محله">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>خیابان اصلی  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.TheMainStreet" placeholder="خیابان اصلی">
+                            <input type="text" class="form-control" v-model="model.theMainStreet" placeholder="خیابان اصلی">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>خیابان فرعی  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.AuxiliaryRoad" placeholder="خیابان فرعی">
+                            <input type="text" class="form-control" v-model="model.auxiliaryRoad" placeholder="خیابان فرعی">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>کوچه  را وارد کنید</label>
-                            <input type="text" class="form-control" v-model="model.Alley" placeholder="کوچه">
+                            <input type="text" class="form-control" v-model="model.alley" placeholder="کوچه">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                         <div class="form-group">
                             <label>پلاک  را وارد کنید</label>
-                            <input type="number" class="form-control" v-model="model.Plaque" placeholder="پلاک">
+                            <input type="number" class="form-control" v-model="model.plaque" placeholder="پلاک">
                         </div>
                     </div>     
                     <div class="col-md-3 col-xs-12">
                          <div class="form-group">
                             <label>محله را انتخاب کنید</label>
-                            <select v-model="model.LocationId" class="form-control">
+                            <select v-model="model.locationId" class="form-control">
                                 <option value="">محله را انتخاب کنید </option>
                                 <option v-for="item in location" :value="item.id">{{item.title}}</option>
                             </select>
@@ -519,7 +519,7 @@
                     <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                             <label>نیازمندی های ضروری   را وارد کنید</label>
-                            <textarea class="form-control" v-model="model.EssentialRequirementsOfTheBoard" placeholder="نیازمندی های ضروری " ></textarea>
+                            <textarea class="form-control" v-model="model.essentialRequirementsOfTheBoard" placeholder="نیازمندی های ضروری " ></textarea>
                         </div>
                     </div>  
                 </div>  
@@ -543,149 +543,149 @@
         data:{
             model:{
                 // نام هییٔت
-                Name:'',
+                name:'',
                 // تاریخ ثبت
-                EstablishedYear:'',
+                establishedYear:'',
                 // شماره ثبت
-                RegistrationNumber:'',
+                registrationNumber:'',
                 // محل ثبت
-                RegistrationLocation:'',
+                registrationLocation:'',
                 // نام مسئول
-                ManagerName:'',
+                managerName:'',
                 // شماره تماس مسئول
-                ManagerPhoneNumber:'',
+                managerPhoneNumber:'',
                 //  شماره تماس یکی از امنا
-                ContactPhoneNumber:'',
+                contactPhoneNumber:'',
                 // اعضای هییت امنا
-                ContactNames:'',
+                contactNames:'',
                 // مسیٔول رسانه
-                MediaManagerFullName:'',
+                mediaManagerFullName:'',
                 // شماره تماس مسیٔول رسانه
-                MediaManagerPhoneNumber:'' , 
+                mediaManagerPhoneNumber:'' , 
                 // نحوه شکل گیری - محله ای
-                IsLocal:false, 
+                isLocal:false, 
                 //  نحوه شکل گیری - قومیتی
-                IsEthnicity:false,           
+                isEthnicity:false,           
                 //  نحوه شکل گیری - صنفی
-                IsGuild:false,
+                isGuild:false,
                 //  نحوه شکل گیری - اداری یا سازمانی
-                IsOfficial:false,
+                isOfficial:false,
                 // نحوه عزاداری - سینه زنی
-                IsBreastplate:false,
+                isBreastplate:false,
                 //  نحوه عزاداری - زنجیر زنی
-                IsChainsaw:false,
+                isChainsaw:false,
                 // نحوه عزاداری - تعزیه خوانی
-                IsPassionReading:false,
+                isPassionReading:false,
                 // نحوه عزاداری - شبیه خوانی
-                IsResemblance:false,
+                isResemblance:false,
                 //  نحوه عزاداری - و یا
-                AndOther:'' ,
+                andOther:'' ,
                 // زمانبندی و شرح اجرای برنامه - هفتگی
-                IsWeekly:false,
+                isWeekly:false,
                 // زمانبندی و شرح اجرای برنامه - روز هفته
-                WeekDay:'',
+                weekDay:'',
                 // زمانبندی و شرح اجرای برنامه - ماهانه
-                IsMonthly:false,
+                isMonthly:false,
                 // زمانبندی و شرح اجرای برنامه - روز ماه
-                MonthDay:'',
+                monthDay:'',
                 //  زمانبندی و شرح اجرای برنامه - سالانه
-                IsYearly:false,
+                isYearly:false,
                 // زمانبندی و شرح اجرای برنامه - روز سال
-                YearDay:'',
+                yearDay:'',
                 // زمانبندی و شرح اجرای برنامه - ماسبتی
-                IsDeally:false,
+                isDeally:false,
                 // زمانبندی و شرح اجرای برنامه - قرآت
-                IsQuran:false,
+                isQuran:false,
                 // زمانبندی و شرح اجرای برنامه - دعا
-                IsPray:false,
+                isPray:false,
                 // زمانبندی و شرح اجرای برنامه - نام دعا
-                PrayName:false,
+                prayName:false,
                 // زمانبندی و شرح اجرای برنامه - دارای سخنران
-                IsShokhanran:false,
+                isShokhanran:false,
                 //  زمانبندی و شرح اجرای برنامه - دارای مداحی
-                IsEagerness:false,
+                isEagerness:false,
                 // زمانبندی و شرح اجرای برنامه - دارای پذیرایی
-                IsCatering:false,
+                isCatering:false,
                 // زمانبندی و شرح اجرای برنامه - ویا
-                AndOtherSchedule:'',
+                andOtherSchedule:'',
                 //  نحوه اطلاع رسانی - شماره سامانه پیامکی
-                SMSSystemNumber:'',
+                sMSSystemNumber:'',
                 // نحوه اطلاع رسانی - آدرس سایت
-                SiteAddress:'',
+                siteAddress:'',
                 // نحوه اطلاع رسانی - آدرس تلگرام
-                TelegramAddress:'',
+                telegramAddress:'',
                 // نحوه اطلاع رسانی - آدرس اینستاگرام
-                InstagramAddress:'',
+                instagramAddress:'',
                 // نحوه اطلاع رسانی - دارای تابلوی اطلاع رسانی
-                IsNotificationBar:false,
+                isNotificationBar:false,
                 // مجریان برنامه - قاری
-                Qhari:'',
+                qhari:'',
                 // مجریان برنامه - سخنران
-                Sokhanran:'',
+                sokhanran:'',
                 // مجریان برنامه - مداح
-                Maddah:'',
+                maddah:'',
                 // مجریان برنامه - برنامه ویژه
-                SpecialApp:'',
+                specialApp:'',
                 //  آمار مستمعین - برادران
-                Brothers:false,
+                brothers:false,
                 //  آمار مستمعین - خواهران
-                Sisters:false,
+                sisters:false,
                 // آمار مستمعین - میزان جمعیت تقریبی
-                ApproximatePopulation:'',
+                approximatePopulation:'',
                 // آمار مستمعین - میزان جمعیت در ویژه برنامه
-                PopulationsInSpecialProgram:'',
+                populationsInSpecialProgram:'',
                 // مشخصات مکان برگزاری جلسه - ثابت
-                Const:false,
+                const:false,
                 // مشخصات مکان برگزاری جلسه - سیار
-                Mobile:false,
+                mobile:false,
                 // مشخصات مکان برگزاری جلسه - مسجد
-                Mosque:false,
+                mosque:false,
                 // مشخصات مکان برگزاری جلسه - حسینیه
-                Husseinieh:false,
+                husseinieh:false,
                 // مشخصات مکان برگزاری جلسه - ساختمان خصوصی
-                PrivateBuilding:false,
+                privateBuilding:false,
                 // مشخصات مکان برگزاری جلسه - فضای عمومی موقت
-                TemporaryPublicSpace:false,
+                temporaryPublicSpace:false,
                 // مشخصات مکان برگزاری جلسه - به متراژ کل
-                TotalArea:'',
+                totalArea:'',
                 // مشخصات مکان برگزاری جلسه - متراژ برادران
-                TotalBrother:'',
+                totalBrother:'',
                 // مشخصات مکان برگزاری جلسه - متراژ خواهران
-                TotalSister:'',
+                totalSister:'',
                 // نحوه جذب منابع - کمک های مردمی
-                PopularSupport:false,
+                popularSupport:false,
                 // نحوه جذب منابع -  بودجه ثابت سازمان یا اداره
-                FixedBudgetOrganizationOrOffice:false,
+                fixedBudgetOrganizationOrOffice:false,
                 // نحوه جذب منابع - فعالیتهای اقتصادی 
-                EconomicActivitiesInTheField:false,
+                economicActivitiesInTheField:false,
                 // فعالیت های جانبی - اردویی
-                TheCamp:'',
+                theCamp:'',
                 // فعالیت های جانبی - فرهنگی
-                Cultural:'',
+                cultural:'',
                 // فعالیت های جانبی - آموزشی
-                Educational:'',
+                educational:'',
                 // فعالیت های جانبی - خیریه 
-                Charity:'',
+                charity:'',
                 // فعالیت های جانبی - سایر
-                Others:'',
+                others:'',
                 // موقعیت مکان - منطقه
-                Area:'',
+                area:'',
                 // موقعیت مکان - ناحیه
-                LocArea:'',
+                locArea:'',
                 //  موقعیت مکان - محله
-                TheNeighbourhood:'',
+                theNeighbourhood:'',
                 // موقعیت مکان - خیابان اصلی
-                TheMainStreet:'',
+                theMainStreet:'',
                 // موقعیت مکان - خیابان فرعی
-                AuxiliaryRoad:'',
+                auxiliaryRoad:'',
                 // موقعیت مکان - کوچه
-                Alley:'',
+                alley:'',
                 // موقعیت مکان - پلاک
-                Plaque:'',
+                plaque:'',
                 // نیازمندی های ضروری
-                EssentialRequirementsOfTheBoard:'',
+                essentialRequirementsOfTheBoard:'',
                 // انتخاب محله 
-                LocationId:''
+                locationId:''
             } , 
             location:[],
             search:{
@@ -720,7 +720,7 @@
                     toastr.error('محله ای انتخاب نکرده اید ');
                     return
                 }
-                app.model.EstablishedYear=$('#time').val()
+                app.model.establishedYear=$('#time').val()
                 var l = Ladda.create(document.querySelector('[data-role="addHeiat"]'));
                 l.start(); 
                 $.ajax({
@@ -747,151 +747,151 @@
                 })              
             },
             clearModel:function(){
-                app.model={
+                 app.model={
                     // نام هییٔت
-                    Name:'',
+                    name:'',
                     // تاریخ ثبت
-                    EstablishedYear:'',
+                    establishedYear:'',
                     // شماره ثبت
-                    RegistrationNumber:'',
+                    registrationNumber:'',
                     // محل ثبت
-                    RegistrationLocation:'',
+                    registrationLocation:'',
                     // نام مسئول
-                    ManagerName:'',
+                    managerName:'',
                     // شماره تماس مسئول
-                    ManagerPhoneNumber:'',
+                    managerPhoneNumber:'',
                     //  شماره تماس یکی از امنا
-                    ContactPhoneNumber:'',
+                    contactPhoneNumber:'',
                     // اعضای هییت امنا
-                    ContactNames:'',
+                    contactNames:'',
                     // مسیٔول رسانه
-                    MediaManagerFullName:'',
+                    mediaManagerFullName:'',
                     // شماره تماس مسیٔول رسانه
-                    MediaManagerPhoneNumber:'' , 
+                    mediaManagerPhoneNumber:'' , 
                     // نحوه شکل گیری - محله ای
-                    IsLocal:false, 
+                    isLocal:false, 
                     //  نحوه شکل گیری - قومیتی
-                    IsEthnicity:false,           
+                    isEthnicity:false,           
                     //  نحوه شکل گیری - صنفی
-                    IsGuild:false,
+                    isGuild:false,
                     //  نحوه شکل گیری - اداری یا سازمانی
-                    IsOfficial:false,
+                    isOfficial:false,
                     // نحوه عزاداری - سینه زنی
-                    IsBreastplate:false,
+                    isBreastplate:false,
                     //  نحوه عزاداری - زنجیر زنی
-                    IsChainsaw:false,
+                    isChainsaw:false,
                     // نحوه عزاداری - تعزیه خوانی
-                    IsPassionReading:false,
+                    isPassionReading:false,
                     // نحوه عزاداری - شبیه خوانی
-                    IsResemblance:false,
+                    isResemblance:false,
                     //  نحوه عزاداری - و یا
-                    AndOther:'' ,
+                    andOther:'' ,
                     // زمانبندی و شرح اجرای برنامه - هفتگی
-                    IsWeekly:false,
+                    isWeekly:false,
                     // زمانبندی و شرح اجرای برنامه - روز هفته
-                    WeekDay:'',
+                    weekDay:'',
                     // زمانبندی و شرح اجرای برنامه - ماهانه
-                    IsMonthly:false,
+                    isMonthly:false,
                     // زمانبندی و شرح اجرای برنامه - روز ماه
-                    MonthDay:'',
+                    monthDay:'',
                     //  زمانبندی و شرح اجرای برنامه - سالانه
-                    IsYearly:false,
+                    isYearly:false,
                     // زمانبندی و شرح اجرای برنامه - روز سال
-                    YearDay:'',
+                    yearDay:'',
                     // زمانبندی و شرح اجرای برنامه - ماسبتی
-                    IsDeally:false,
+                    isDeally:false,
                     // زمانبندی و شرح اجرای برنامه - قرآت
-                    IsQuran:false,
+                    isQuran:false,
                     // زمانبندی و شرح اجرای برنامه - دعا
-                    IsPray:false,
+                    isPray:false,
                     // زمانبندی و شرح اجرای برنامه - نام دعا
-                    PrayName:false,
+                    prayName:false,
                     // زمانبندی و شرح اجرای برنامه - دارای سخنران
-                    IsShokhanran:false,
+                    isShokhanran:false,
                     //  زمانبندی و شرح اجرای برنامه - دارای مداحی
-                    IsEagerness:false,
+                    isEagerness:false,
                     // زمانبندی و شرح اجرای برنامه - دارای پذیرایی
-                    IsCatering:false,
+                    isCatering:false,
                     // زمانبندی و شرح اجرای برنامه - ویا
-                    AndOtherSchedule:'',
+                    andOtherSchedule:'',
                     //  نحوه اطلاع رسانی - شماره سامانه پیامکی
-                    SMSSystemNumber:'',
+                    sMSSystemNumber:'',
                     // نحوه اطلاع رسانی - آدرس سایت
-                    SiteAddress:'',
+                    siteAddress:'',
                     // نحوه اطلاع رسانی - آدرس تلگرام
-                    TelegramAddress:'',
+                    telegramAddress:'',
                     // نحوه اطلاع رسانی - آدرس اینستاگرام
-                    InstagramAddress:'',
+                    instagramAddress:'',
                     // نحوه اطلاع رسانی - دارای تابلوی اطلاع رسانی
-                    IsNotificationBar:false,
+                    isNotificationBar:false,
                     // مجریان برنامه - قاری
-                    Qhari:'',
+                    qhari:'',
                     // مجریان برنامه - سخنران
-                    Sokhanran:'',
+                    sokhanran:'',
                     // مجریان برنامه - مداح
-                    Maddah:'',
+                    maddah:'',
                     // مجریان برنامه - برنامه ویژه
-                    SpecialApp:'',
+                    specialApp:'',
                     //  آمار مستمعین - برادران
-                    Brothers:false,
+                    brothers:false,
                     //  آمار مستمعین - خواهران
-                    Sisters:false,
+                    sisters:false,
                     // آمار مستمعین - میزان جمعیت تقریبی
-                    ApproximatePopulation:'',
+                    approximatePopulation:'',
                     // آمار مستمعین - میزان جمعیت در ویژه برنامه
-                    PopulationsInSpecialProgram:'',
+                    populationsInSpecialProgram:'',
                     // مشخصات مکان برگزاری جلسه - ثابت
-                    Const:false,
+                    const:false,
                     // مشخصات مکان برگزاری جلسه - سیار
-                    Mobile:false,
+                    mobile:false,
                     // مشخصات مکان برگزاری جلسه - مسجد
-                    Mosque:false,
+                    mosque:false,
                     // مشخصات مکان برگزاری جلسه - حسینیه
-                    Husseinieh:false,
+                    husseinieh:false,
                     // مشخصات مکان برگزاری جلسه - ساختمان خصوصی
-                    PrivateBuilding:false,
+                    privateBuilding:false,
                     // مشخصات مکان برگزاری جلسه - فضای عمومی موقت
-                    TemporaryPublicSpace:false,
+                    temporaryPublicSpace:false,
                     // مشخصات مکان برگزاری جلسه - به متراژ کل
-                    TotalArea:'',
+                    totalArea:'',
                     // مشخصات مکان برگزاری جلسه - متراژ برادران
-                    TotalBrother:'',
+                    totalBrother:'',
                     // مشخصات مکان برگزاری جلسه - متراژ خواهران
-                    TotalSister:'',
+                    totalSister:'',
                     // نحوه جذب منابع - کمک های مردمی
-                    PopularSupport:false,
+                    popularSupport:false,
                     // نحوه جذب منابع -  بودجه ثابت سازمان یا اداره
-                    FixedBudgetOrganizationOrOffice:false,
+                    fixedBudgetOrganizationOrOffice:false,
                     // نحوه جذب منابع - فعالیتهای اقتصادی 
-                    EconomicActivitiesInTheField:false,
+                    economicActivitiesInTheField:false,
                     // فعالیت های جانبی - اردویی
-                    TheCamp:'',
+                    theCamp:'',
                     // فعالیت های جانبی - فرهنگی
-                    Cultural:'',
+                    cultural:'',
                     // فعالیت های جانبی - آموزشی
-                    Educational:'',
+                    educational:'',
                     // فعالیت های جانبی - خیریه 
-                    Charity:'',
+                    charity:'',
                     // فعالیت های جانبی - سایر
-                    Others:'',
+                    others:'',
                     // موقعیت مکان - منطقه
-                    Area:'',
+                    area:'',
                     // موقعیت مکان - ناحیه
-                    LocArea:'',
+                    locArea:'',
                     //  موقعیت مکان - محله
-                    TheNeighbourhood:'',
+                    theNeighbourhood:'',
                     // موقعیت مکان - خیابان اصلی
-                    TheMainStreet:'',
+                    theMainStreet:'',
                     // موقعیت مکان - خیابان فرعی
-                    AuxiliaryRoad:'',
+                    auxiliaryRoad:'',
                     // موقعیت مکان - کوچه
-                    Alley:'',
+                    alley:'',
                     // موقعیت مکان - پلاک
-                    Plaque:'',
+                    plaque:'',
                     // نیازمندی های ضروری
-                    EssentialRequirementsOfTheBoard:'',
+                    essentialRequirementsOfTheBoard:'',
                     // انتخاب محله 
-                    LocationId:''
+                    locationId:''
                 }
             },
             getData:function(){
