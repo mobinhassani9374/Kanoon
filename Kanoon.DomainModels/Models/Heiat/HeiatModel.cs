@@ -372,6 +372,6 @@ namespace Kanoon.DomainModels.Models.Heiat
 
         public int LocationId { get; set; }
 
-        public string LocationName { get; set; }
+        public string LocationTitle { get; set; }
     }
 }
