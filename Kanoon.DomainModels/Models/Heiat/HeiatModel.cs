@@ -371,5 +371,7 @@ namespace Kanoon.DomainModels.Models.Heiat
         public string EssentialRequirementsOfTheBoard { get; set; }
 
         public int LocationId { get; set; }
+
+        public string LocationName { get; set; }
     }
 }
