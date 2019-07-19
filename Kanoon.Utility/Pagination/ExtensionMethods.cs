@@ -15,7 +15,7 @@ namespace Kanoon.Utility.Pagination
 
             query = query
                 .Skip((searchCritria.PageNumber - 1) * searchCritria.PageSize)
-                .Take(searchCritria.PageNumber);
+                .Take(searchCritria.PageSize);
 
             result.Data = query.ToList();
 
