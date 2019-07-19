@@ -35,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>               
-                <tr v-for="(item , index) in search.data">
+                <tr v-if="!loading" v-for="(item , index) in search.data">
                     <td>{{++index}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.locationTitle}}</td>
@@ -45,11 +45,16 @@
                         </button>
                     </td>
                 </tr>
+                <tr v-if="loading">
+                    <td colspan="4">
+                        <i class="fa fa-spin fa-spinner"></i>
+                    </td>
+                </tr>
             </tbody>
             </table>
         </div>
-        <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0">
-            <button class="btn btn-success">نمایش اطلاعات بیشتر </button>
+        <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0" v-if="search.currentPage!=search.totalPages">
+            <button class="btn btn-success" v-on:click="moreData()" >نمایش اطلاعات بیشتر </button>
         </div>
     </div>
 
@@ -688,9 +693,10 @@
                 totalRows: 0,
                 currentPage:0,
                 data:[],
-            }
+            } ,
+            loading:true,
         },
-        methods:{
+        methods:{ 
             openModal:function() {
                 if(this.location.length==0) {
                     $.ajax({
@@ -729,7 +735,7 @@
                         if(response.isSuccess) {
                             toastr.success(response.message)
                             $('#modalAdd').modal('hide')
-                            app.search.pageSize=1;
+                            app.search.pageNumber=1;
                             app.getData()
                         }
                         else {
@@ -892,17 +898,23 @@
                 }
             },
             getData:function(){
+                this.loading=true;
                 let search = this.search;
                 let $this=this;
                 $.ajax({
                     url:'/Admin/Heiat/ApiGet',
                     method:'Post',
                     data:search,
-                    success:function(response) {
+                    success:function(response) {                       
                         $this.search=response;
-                        $this.search.pageSize=$this.search.currentPage;
+                        $this.search.pageNumber=$this.search.currentPage;
+                        $this.loading=false;
                     }
                 })
+            } ,
+            moreData:function(){
+                this.search.pageNumber++;
+                this.getData();
             }
         } , 
         created:function(){
