@@ -58,5 +58,10 @@ namespace Kanoon.Data.Repositories
         {
             return _context.Set<TEntity>().AsQueryable().Where(predicate);
         }
+
+        public IQueryable<TEntity> AsQueryable()
+        {
+            return _context.Set<TEntity>().AsQueryable();
+        }
     }
 }
