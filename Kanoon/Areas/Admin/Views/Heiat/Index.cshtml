@@ -43,6 +43,9 @@
                         <button data-role="delete" :data-id="item.id" v-on:click="deleteHeiat(item.id)" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
                             <span class="ladda-label">حذف</span>                           
                         </button>
+                        <button v-on:click="detail(item)" class="btn btn-warning">
+                            مشاهده جزئیات
+                        </button>
                     </td>
                 </tr>               
             </tbody>
@@ -62,7 +65,8 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4  class="modal-title">اضافه نمودن هییٔت جدید </h4>                
+                <h4 class="modal-title" v-if="status=='add'">اضافه نمودن هییٔت جدید </h4>                
+                <h4 class="modal-title" v-if="status=='detail'">مشاهده  نمودن جزئیات هییٔت  </h4>                
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -522,7 +526,7 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer">        
+            <div class="modal-footer"  v-if="status=='add'">        
                 <button v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
                     <span  class="ladda-label">ثبت اطلاعات</span>
                 </button>
@@ -693,9 +697,11 @@
                 data:[],
             } ,
             loading:true,
+            status:'add'
         },
         methods:{ 
             openModal:function() {
+                this.status='add'
                 this.clearModel();
                 $('#modalAdd').modal({
                     backdrop: 'static',
@@ -946,6 +952,13 @@
                         }          
                     }) 
                 });
+            },
+            detail:function(item) {               
+                this.model=item;
+                 $('#modalAdd').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
             }
         } , 
         created:function(){
@@ -977,7 +990,3 @@
         })
     })
 </script>
-
-
-
-
