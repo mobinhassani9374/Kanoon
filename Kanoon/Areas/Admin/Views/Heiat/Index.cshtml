@@ -29,19 +29,21 @@
                 <tr class="text-muted">
                     <th>#</th>
                     <th>نام هییٔت </th>
-                    <th>نام مسئول محله </th>
-                    <th>شماره مسئول محله</th>
-                    <th>تعداد مسئول جانشین</th>
+                    <th>نام  محله </th>                   
                     <th>عملیات</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr >
-                    <td colspan="6">
-                        <i class="fa fa-lg fa-spin fa-spinner"></i>
+            <tbody>               
+                <tr v-for="(item , index) in search.data">
+                    <td>{{++index}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.locationId}}</td>
+                    <td>
+                        <button data-role="deleteLocation" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
+                            <span class="ladda-label">حذف</span>                           
+                        </button>
                     </td>
                 </tr>
-               
             </tbody>
             </table>
         </div>
@@ -674,7 +676,15 @@
                 // انتخاب محله 
                 LocationId:''
             } , 
-            location:[]
+            location:[],
+            search:{
+                pageNumber:1,
+                pageSize:10,
+                totalPages: 0,
+                totalRows: 0,
+                currentPage:0,
+                data:[],
+            }
         },
         methods:{
             openModal:function() {
@@ -715,6 +725,7 @@
                         if(response.isSuccess) {
                             toastr.success(response.message)
                             $('#modalAdd').modal('hide')
+                            app.search.pageSize=1;
                             app.getData()
                         }
                         else {
@@ -877,8 +888,21 @@
                 }
             },
             getData:function(){
-                
+                let search = this.search;
+                let $this=this;
+                $.ajax({
+                    url:'/Admin/Heiat/ApiGet',
+                    method:'Post',
+                    data:search,
+                    success:function(response) {
+                        $this.search=response;
+                        $this.search.pageSize=$this.search.currentPage;
+                    }
+                })
             }
+        } , 
+        created:function(){
+            this.getData()
         }
     })
 
