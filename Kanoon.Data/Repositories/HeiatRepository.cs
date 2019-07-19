@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Kanoon.Data.Context;
 using Kanoon.DomainModels.Models.Heiat;
 using Kanoon.Utility.Pagination;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,15 +18,15 @@ namespace Kanoon.Data.Repositories
         }
         public Paginated<HeiatModel> Search(HeiatSearchModel model)
         {
-            var query = this.AsQueryable();
+            var query = this.AsQueryable().Include(c => c.Location);
 
             var data = query
                 .ProjectTo<HeiatModel>()
                 .ToPaginated(new PaginationSearchCritria
-            {
-                PageNumber = model.PageNumber,
-                PageSize = model.PageSize
-            });
+                {
+                    PageNumber = model.PageNumber,
+                    PageSize = model.PageSize
+                });
 
             return data;
         }

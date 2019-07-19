@@ -6,6 +6,7 @@ namespace Kanoon.DomainModels.Models.Heiat
 {
     public class HeiatModel
     {
+        public int Id { get; set; }
         /// <summary>
         /// نام هییت
         /// </summary>
@@ -370,5 +371,7 @@ namespace Kanoon.DomainModels.Models.Heiat
         public string EssentialRequirementsOfTheBoard { get; set; }
 
         public int LocationId { get; set; }
+
+        public string LocationTitle { get; set; }
     }
 }
