@@ -971,6 +971,9 @@
                     backdrop: 'static',
                     keyboard: false
                 })
+                  setTimeout(function(){
+                    $("#modalAdd .modal-body").animate({ scrollTop: 0 })
+                },200)
             } , 
             edit:function(item){
                 this.model=item;
@@ -980,6 +983,9 @@
                     backdrop: 'static',
                     keyboard: false
                 })
+                  setTimeout(function(){
+                    $("#modalAdd .modal-body").animate({ scrollTop: 0 })
+                },200)
             },           
         } , 
         created:function(){
