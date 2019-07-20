@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kanoon.Data.Repositories;
 using Kanoon.DomainModels.Models.Heiat;
+using Kanoon.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kanoon.Areas.Admin.Controllers
@@ -23,6 +24,16 @@ namespace Kanoon.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult ApiCreate(HeiatModel model)
         {
+            if (model.LocationId == 0)
+            {
+                return Ok(ServiceResult.Error("محله را انتخاب نکرده اید"));
+            }
+
+            if(string.IsNullOrEmpty(model.Name))
+            {
+                return Ok(ServiceResult.Error("نام هییٔت نمی تواند فاقد مقدار باشد"));
+            }
+
             var result = _heiatRepository.Create(model);
             return Ok(result);
         }
