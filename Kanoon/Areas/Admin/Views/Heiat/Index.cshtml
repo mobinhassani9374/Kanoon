@@ -46,13 +46,16 @@
                         <button v-on:click="detail(item)" class="btn btn-warning">
                             مشاهده جزئیات
                         </button>
+                        <button v-on:click="edit(item)" class="btn btn-info">
+                           ویرایش
+                        </button>
                     </td>
                 </tr>               
             </tbody>
             </table>
         </div>
         <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0" v-if="search.currentPage!=search.totalPages && search.data.length!=0">
-            <button style="width:200px;" class="btn btn-success" v-on:click="moreData()" >
+            <button style="width:200px;" class="btn btn-success" v-on:click="moreData()">
                 <span class="fa fa-spin fa-spinner" v-if="loading"></span>
                 <span  v-if="!loading">نمایش اطلاعات بیشتر </span>
             </button>
@@ -67,6 +70,7 @@
             <div class="modal-header">
                 <h4 class="modal-title" v-if="status=='add'">اضافه نمودن هییٔت جدید </h4>                
                 <h4 class="modal-title" v-if="status=='detail'">مشاهده  نمودن جزئیات هییٔت  </h4>                
+                <h4 class="modal-title" v-if="status=='edit'">ویرایش نمودن هییٔت  </h4>                
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -526,10 +530,10 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer"  v-if="status=='add'">        
-                <button v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
+            <div class="modal-footer">        
+                <button v-if="status=='add' || status=='edit'" v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
                     <span  class="ladda-label">ثبت اطلاعات</span>
-                </button>
+                </button>               
             </div>
 
             </div>
@@ -722,16 +726,20 @@
                 }
                 app.model.establishedYear=$('#time').val()
                 var l = Ladda.create(document.querySelector('[data-role="addHeiat"]'));
+                var url = '/Admin/Heiat/ApiCreate';
+                if(this.status=='edit') {
+                    url = '/Admin/Heiat/ApiEdit';
+                }
                 l.start(); 
                 $.ajax({
-                    url:'/Admin/Heiat/ApiCreate',
+                    url:url,
                     method:'Post',
                     data:app.model,
                     success:function(response){                     
                         if(response.isSuccess) {
                             toastr.success(response.message)
                             $('#modalAdd').modal('hide')
-                            app.search.pageNumber=1;
+                            //app.search.pageNumber=1;
                             app.search.data=[]
                             app.getData()
                         }
@@ -955,7 +963,7 @@
                     }) 
                 });
             },
-            detail:function(item) {               
+            detail:function(item){               
                 this.model=item;
                 this.status='detail',
                 $('#time').val(app.model.establishedYear)
@@ -963,7 +971,16 @@
                     backdrop: 'static',
                     keyboard: false
                 })
-            }
+            } , 
+            edit:function(item){
+                this.model=item;
+                this.status='edit',
+                $('#time').val(app.model.establishedYear)
+                $('#modalAdd').modal({
+                    backdrop: 'static',
+                    keyboard: false
+                })
+            },           
         } , 
         created:function(){
             this.getData()
