@@ -599,7 +599,7 @@
                 // زمانبندی و شرح اجرای برنامه - دعا
                 isPray:false,
                 // زمانبندی و شرح اجرای برنامه - نام دعا
-                prayName:false,
+                prayName:'',
                 // زمانبندی و شرح اجرای برنامه - دارای سخنران
                 isShokhanran:false,
                 //  زمانبندی و شرح اجرای برنامه - دارای مداحی
@@ -805,7 +805,7 @@
                     // زمانبندی و شرح اجرای برنامه - دعا
                     isPray:false,
                     // زمانبندی و شرح اجرای برنامه - نام دعا
-                    prayName:false,
+                    prayName:'',
                     // زمانبندی و شرح اجرای برنامه - دارای سخنران
                     isShokhanran:false,
                     //  زمانبندی و شرح اجرای برنامه - دارای مداحی
@@ -893,6 +893,7 @@
                     // انتخاب محله 
                     locationId:''
                 }
+                $('#time').val('')
             },
             getData:function(){
                 this.loading=true;
@@ -957,7 +958,8 @@
             detail:function(item) {               
                 this.model=item;
                 this.status='detail',
-                 $('#modalAdd').modal({
+                $('#time').val(app.model.establishedYear)
+                $('#modalAdd').modal({
                     backdrop: 'static',
                     keyboard: false
                 })
