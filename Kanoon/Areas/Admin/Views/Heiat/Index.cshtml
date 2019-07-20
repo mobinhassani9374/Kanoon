@@ -40,7 +40,7 @@
                     <td>{{item.name}}</td>
                     <td>{{item.locationTitle}}</td>
                     <td>
-                        <button data-role="delete" :data-id="item.id" v-on:click="deleteHeiat(item.id)" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
+                        <button data-role="delete" :data-id="item.id" v-on:click="deleteHeiat(item.id,--index)" type="button"  class="btn btn-danger ladda-button" data-style="slide-right">
                             <span class="ladda-label">حذف</span>                           
                         </button>
                         <button v-on:click="detail(item)" class="btn btn-warning">
@@ -51,7 +51,7 @@
             </tbody>
             </table>
         </div>
-        <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0" v-if="search.currentPage!=search.totalPages">
+        <div class="text-center cleadrfix col-xl-12 col-12 mb-4 mb-xl-0" v-if="search.currentPage!=search.totalPages && search.data.length!=0">
             <button style="width:200px;" class="btn btn-success" v-on:click="moreData()" >
                 <span class="fa fa-spin fa-spinner" v-if="loading"></span>
                 <span  v-if="!loading">نمایش اطلاعات بیشتر </span>
@@ -916,7 +916,7 @@
                 this.search.pageNumber++;
                 this.getData();
             } , 
-            deleteHeiat:function(id){               
+            deleteHeiat:function(id,index) {                      
                 swal({
                     title: "حذف هیئت ",
                     text: "آیا مطمئن هستید ؟؟ ",
@@ -936,10 +936,11 @@
                         method:'Post' ,                   
                         success:function(response){                     
                             if(response.isSuccess) {
-                                toastr.success(response.message)
-                                app.search.pageNumber=1;
-                                app.search.data=[];
-                                app.getData()
+                                toastr.success(response.message)                              
+                                //app.search.pageNumber=1;
+                                //app.search.data=[];
+                                //app.getData()                                
+                                app.search.data.splice(index,1)                             
                             }
                             else {
                                 toastr.error(response.message)                            
