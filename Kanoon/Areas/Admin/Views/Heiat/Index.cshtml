@@ -531,7 +531,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">        
-                <button v-if="status=='add' || status=='edit'" v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
+                <button  v-on:click="saveHeiat()" data-role="addHeiat" type="button" class="btn btn-success w-100 mr-1 ladda-button" data-style="slide-right">
                     <span  class="ladda-label">ثبت اطلاعات</span>
                 </button>               
             </div>
@@ -711,6 +711,8 @@
                     backdrop: 'static',
                     keyboard: false
                 })
+                $('#modalAdd').find('input , select , textarea').removeAttr('readonly');
+                $('#modalAdd').find('button[data-role="addHeiat"]').removeAttr('disabled')
                 setTimeout(function(){
                     $("#modalAdd .modal-body").animate({ scrollTop: 0 })
                 },200)
@@ -972,7 +974,9 @@
                     keyboard: false
                 })
                   setTimeout(function(){
-                    $("#modalAdd .modal-body").animate({ scrollTop: 0 })
+                    $("#modalAdd .modal-body").animate({ scrollTop: 0 });
+                    $('#modalAdd').find('input , select , textarea').attr('readonly',true)
+                    $('#modalAdd').find('button[data-role="addHeiat"]').attr('disabled','disabled')
                 },200)
             } , 
             edit:function(item){
@@ -983,12 +987,14 @@
                     backdrop: 'static',
                     keyboard: false
                 })
-                  setTimeout(function(){
+                $('#modalAdd').find('input , select , textarea').removeAttr('readonly')
+                $('#modalAdd').find('button[data-role="addHeiat"]').removeAttr('disabled')
+                setTimeout(function(){
                     $("#modalAdd .modal-body").animate({ scrollTop: 0 })
                 },200)
             },           
         } , 
-        created:function(){
+        created:function() {
             this.getData()
         }
     })
