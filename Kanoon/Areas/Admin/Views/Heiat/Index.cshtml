@@ -741,7 +741,10 @@
                         if(response.isSuccess) {
                             toastr.success(response.message)
                             $('#modalAdd').modal('hide')
-                            //app.search.pageNumber=1;
+                            
+                            if(this.status=='add') {
+                                app.search.pageNumber=1;
+                            }
                             app.search.data=[]
                             app.getData()
                         }
@@ -950,8 +953,15 @@
                                 toastr.success(response.message)                              
                                 //app.search.pageNumber=1;
                                 //app.search.data=[];
-                                //app.getData()                                
-                                app.search.data.splice(index,1)                             
+                                //app.getData()                                  
+                                app.search.data.splice(index,1)  
+                                app.search.totalRows--;
+
+                                if(app.search.totalRows!=0 &&  app.search.data.length==0) {
+                                    app.search.pageNumber=1;                                
+                                    app.getData() 
+                                }                        
+                                                          
                             }
                             else {
                                 toastr.error(response.message)                            
