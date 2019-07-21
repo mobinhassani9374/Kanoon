@@ -25,6 +25,26 @@
             </div>
             <h3 class="text-muted text-center mb-3">لیست هییٔت های ثبت شده </h3>
             <p class="text-right">تعداد کل هیئت های ثبت شده : {{search.totalRows}}</p>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>تعداد آیتم نمایشی  را انتخاب کنید</label>
+                        <select v-model="search.pageSize" v-on:change="changePageSize()" class="form-control">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                            <option value="60">60</option>
+                            <option value="70">70</option>
+                            <option value="80">80</option>
+                            <option value="90">90</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <table class="table table-striped bg-light text-center ">
             <thead>
                 <tr class="text-muted">
@@ -1002,7 +1022,11 @@
                 setTimeout(function(){
                     $("#modalAdd .modal-body").animate({ scrollTop: 0 })
                 },200)
-            },           
+            }, 
+            changePageSize:function() {
+                this.search.data=[]
+                this.getData();
+            }          
         } , 
         created:function() {
             this.getData()
