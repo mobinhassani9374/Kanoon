@@ -1,4 +1,5 @@
-﻿
+﻿@using Kanoon.Models
+@model LoginModel
 @{
     Layout = null;
 }
@@ -9,52 +10,54 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ورود به پنل ادمین آستان قدس رضوی منطقه 18</title>
-     <link rel="stylesheet" href="~/theme/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/theme/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/theme/css/shabnam.css">
     <style>
         body {
-            margin:0;
-        }
-        .login {
-            background-image: url(/theme/img/slider.jpg);
-            height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-        }
-        .login::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 0;
-            background-color: #2a486c;
-            opacity: .65;
+            margin: 0;
         }
 
+        .login {
+            background-image: url(/theme/img/slider.jpg);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .login::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                z-index: 0;
+                background-color: #2a486c;
+                opacity: .65;
+            }
+
         .login__box {
-            background:rgba(0,0,0,.4);
-            border-radius:10px;
-            padding:15px;
-            direction:rtl;
-             font-family: shabnam;
+            background: rgba(0,0,0,.4);
+            border-radius: 10px;
+            padding: 15px;
+            direction: rtl;
+            font-family: shabnam;
         }
 
         .login__box__title {
-            color:#fff;
-            font-size:20px;
-            margin:20px 0;
-            border-bottom:1px dotted #ccc;
-            padding-bottom:20px;
+            color: #fff;
+            font-size: 20px;
+            margin: 20px 0;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 20px;
         }
 
         .form-group label {
-            color:#fff;
-            text-align:right !important;
-            font-size:13px;
-            display:block;
+            color: #fff;
+            text-align: right !important;
+            font-size: 13px;
+            display: block;
         }
     </style>
 </head>
@@ -62,17 +65,17 @@
     <div class="login">
         <div class="col-sm-6 col-md-4">
             <div class="login__box">
-                <form>
+                <form method="post">
                     <h5 class="login__box__title">ورود به پنل ادمین آستان قدس رضوی منطقه 18</h5>
                     <div class="form-group">
                         <label for="email">نام کاربری را وارد کنید </label>
-                        <input type="text" class="form-control" placeholder="نام کاربری ">
+                        <input type="text" asp-for="UserName" class="form-control" placeholder="نام کاربری ">
                     </div>
                     <div class="form-group">
                         <label for="email"> کلمه عبور را وارد کنید </label>
-                        <input type="password" class="form-control" placeholder="کلمه عبور">
+                        <input type="password" asp-for="Password" class="form-control" placeholder="کلمه عبور">
                     </div>
-                    <div class="form-group">                        
+                    <div class="form-group">
                         <input type="submit" value="ورود" class="btn btn-outline-secondary btn-block">
                     </div>
                 </form>
