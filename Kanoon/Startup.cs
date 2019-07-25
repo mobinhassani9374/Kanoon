@@ -38,6 +38,7 @@ namespace Kanoon
             // add repository
             services.AddScoped<Data.BaseRepository<Location>>();
             services.AddScoped<HeiatRepository>();
+            services.AddScoped<UserRepository>();
 
             Bootstraper.Mapping.Initializer.Initial();
 
