@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Kanoon.Data;
 using Kanoon.DomainModels.Entities;
 using Kanoon.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Kanoon
 {
@@ -40,6 +41,14 @@ namespace Kanoon
 
             Bootstraper.Mapping.Initializer.Initial();
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.AccessDeniedPath = "/accessDenied";
+                    options.LoginPath = "/login";
+                    options.LogoutPath = "/logout";
+                });
+
             services.AddMvc();
         }
 
@@ -56,6 +65,8 @@ namespace Kanoon
             DatabaseInitializer.Seed(db);
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
