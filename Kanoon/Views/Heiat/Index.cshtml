@@ -12,7 +12,7 @@
     }
 
     .gap {
-        padding:150px 0;
+        padding:150px 0 50px;
     }
 
     @@media (max-width:767px) {
@@ -65,7 +65,7 @@
     }
 </style>
 
-<div class="gap" id="app">
+<div class="gap" id="app" v-cloak>
     <div class="container">
         <div class="sec-title style2 text-center">
             <div class="sec-title-inner">
@@ -78,7 +78,7 @@
                  <div class="col-md-4 col-12 col-sm-12">
                      <div class="form-group">
                         <label>تعداد آیتم نمایشی </label>
-                        <select class="form-control">
+                        <select v-on:change="changeSelect()" v-model="search.pageSize" class="form-control">
                             <option value="8">۸</option>
                             <option value="12">۱۲</option>
                             <option value="16">۱۶</option>
@@ -91,22 +91,22 @@
                  <div class="col-md-4 col-12 col-sm-12">
                      <div class="form-group">
                         <label>روز هفته </label>
-                        <select v-model="search.day" class="form-control">
+                        <select v-on:change="changeSelect()" v-model="search.day" class="form-control">
                             <option value="">همه روزهای هفته</option>
-                            <option>شنبه</option>
-                            <option>یکشنبه</option>
-                            <option>دوشنبه</option>
-                            <option>سه شنبه</option>
-                            <option>چهار شنبه</option>
-                            <option>پنج شنبه</option>
-                            <option>جمعه</option>
+                            <option value="شنبه">شنبه</option>
+                            <option value="یکشنبه">یکشنبه</option>
+                            <option value="دوشنبه">دوشنبه</option>
+                            <option value="سه شنبه">سه شنبه</option>
+                            <option value="چهار شنبه">چهار شنبه</option>
+                            <option value="پنج شنبه">پنج شنبه</option>
+                            <option value="جمعه">جمعه</option>
                         </select>
                     </div>
                  </div>
                  <div class="col-md-4 col-12 col-sm-12">
                      <div class="form-group">
                         <label>انتخاب محله</label>
-                        <select v-model="search.locationId" class="form-control">
+                        <select v-on:change="changeSelect()" v-model="search.locationId" class="form-control">
                             <option value="">همه محله های منطقه 18 </option>
                             <option v-for="item in location" :value="item.id">{{item.title}}</option>
                         </select>
@@ -116,8 +116,8 @@
              <hr />
         </div>
         <div class="team-wrap2 text-center remove-ext3 mt-0">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-lg-3" v-for="item in data.data">
+            <div class="row" v-if="data.length!=0">
+                <div class="col-md-3 col-sm-6 col-lg-3" v-for="item in data">
                     <div class="team-box2" data-toggle="modal" data-target="#myModal">
                         <img src="~/theme/img/heiat.jpg" alt="">
                         <div class="team-info2">
@@ -134,9 +134,20 @@
                 </div>
                
             </div>
+            <div v-if="data.length==0 && !loading">
+                <div class="sec-title style2 text-center">
+                    <div class="sec-title-inner">
+                        <span>هیات مذهبی منطقه ۱۸ تهران</span>
+                        <h3>اطلاعاتی یافت نشد </h3>
+                    </div>
+                </div>
+            </div>
+            <div v-if="loading" class="text-center">
+                <img src="~/img/ajax-loader.gif" class="img-responsive" />
+            </div>
         </div><!-- Team Wrap -->
-        <div class="text-center  clear" v-if="data.totalPages !=data.currentPage">
-            <button class="btn btn-outline-success mt-5">مشاهده اطلاعات بیشتر</button>
+        <div class="text-center  clear" v-if="search.totalPages !=search.currentPage && search.totalPages!=0">
+            <button v-on:click="moreData()" class="btn btn-outline-success mt-5">مشاهده اطلاعات بیشتر</button>
         </div>
     </div>
 </div>
@@ -175,20 +186,40 @@
                 pageNumber:1,
                 pageSize:8,
                 day:'',
-                locationId:''
-            }
+                locationId:'',
+                currentPage:1,
+                totalPages:1
+            } ,
+            loading:true,
         },
         methods:{
             getData:function() {
                 var $this=this;
+                this.loading=true;
                 $.ajax({
                     url:'/Heiat/Search',
                     method:'Post',
-                    data:this.search,
-                    success:function(response) {
-                        app.data=response;
+                    data:$this.search,
+                    success:function(response) {   
+                        var newArray = response.data;
+                        var array = newArray.concat(app.data)
+                        app.data=array;
+                        app.loading=false;
+                        app.search.currentPage=response.currentPage;
+                        app.search.pageNumber=response.currentPage;
+                        app.search.totalPages=response.totalPages;
                     }
                 })
+            } ,
+            changeSelect:function() {
+                this.search.pageNumber=1;
+                this.data = []
+                this.getData()
+            },
+            moreData:function() {
+                this.search.currentPage++;
+                this.search.pageNumber = this.search.currentPage
+                this.getData()
             }
         },
         created:function() {
