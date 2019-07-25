@@ -135,7 +135,7 @@
         <div class="team-wrap2 text-center remove-ext3 mt-0">
             <div class="row" v-if="data.length!=0">
                 <div class="col-md-3 col-sm-6 col-lg-3" v-for="item in data">
-                    <div class="team-box2">
+                    <div class="team-box2" v-on:click="details(item)">
                         <div class="team-box2__icon">
                             <i class="flaticon-mosque"></i>
                         </div>
@@ -172,31 +172,38 @@
             <button v-on:click="moreData()" class="btn btn-outline-success mt-5">مشاهده اطلاعات بیشتر</button>
         </div>
     </div>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{detail.name}}</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p class="text-right">نام محله : <span style="font-weight:bold;">{{detail.locationTitle}}</span></p>
+                <p class="text-right"> روز برگزاری  : <span style="font-weight:bold;">{{detail.weekDay}}</span></p>
+                <p class="text-right">  نام مداح  : <span style="font-weight:bold;">{{detail.maddah}}</span></p>
+                <p class="text-right">  نام سخنران   : <span style="font-weight:bold;">{{detail.sokhanran}}</span></p>
+                <p class="text-right">  خیابان اصلی     : <span style="font-weight:bold;">{{detail.theMainStreet}}</span></p>
+                <p class="text-right">  خیابان فرعی     : <span style="font-weight:bold;">{{detail.auxiliaryRoad}}</span></p>
+                <p class="text-right">  کوچه     : <span style="font-weight:bold;">{{detail.alley}}</span></p>
+                <p class="text-right">  پلاک     : <span style="font-weight:bold;">{{detail.plaque}}</span></p>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">بستن</button>
+            </div>
+
+            </div>
+        </div>
+        </div>
 </div>
 
-
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">هییٔت قایٔمیون</h4>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">بستن</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 <script>
     var app = new Vue({
@@ -211,7 +218,8 @@
                 locationId:'',
                 currentPage:1,
                 totalPages:1
-            } ,
+            },
+            detail:{},
             loading:true,
         },
         methods:{
@@ -243,6 +251,10 @@
                 this.search.currentPage++;
                 this.search.pageNumber = this.search.currentPage
                 this.getData()
+            },
+            details:function(item) {
+                this.detail = item;
+                $('#myModal').modal('show')
             }
         },
         created:function() {
