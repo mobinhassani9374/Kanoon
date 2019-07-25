@@ -168,7 +168,7 @@
                 <div style="font-weight:bold;color:#2a486c">در حال بارگیری اطلاعات</div>
             </div>
         </div><!-- Team Wrap -->
-        <div class="text-center  clear" v-if="search.totalPages !=search.currentPage && search.totalPages!=0">
+        <div class="text-center  clear" v-if="search.totalPages !=search.currentPage && search.totalPages!=0 && !loading" >
             <button v-on:click="moreData()" class="btn btn-outline-success mt-5">مشاهده موارد بیشتر</button>
         </div>
     </div>
