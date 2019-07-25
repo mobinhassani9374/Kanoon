@@ -169,7 +169,7 @@
             </div>
         </div><!-- Team Wrap -->
         <div class="text-center  clear" v-if="search.totalPages !=search.currentPage && search.totalPages!=0">
-            <button v-on:click="moreData()" class="btn btn-outline-success mt-5">مشاهده اطلاعات بیشتر</button>
+            <button v-on:click="moreData()" class="btn btn-outline-success mt-5">مشاهده موارد بیشتر</button>
         </div>
     </div>
 
@@ -226,6 +226,7 @@
             getData:function() {
                 var $this=this;
                 this.loading=true;
+                $('select').attr('disabled','disabled')
                 $.ajax({
                     url:'/Heiat/Search',
                     method:'Post',
@@ -235,6 +236,7 @@
                         var array = newArray.concat(app.data)
                         app.data=array;
                         app.loading=false;
+                        $('select').removeAttr('disabled')
                         app.search.currentPage=response.currentPage;
                         app.search.pageNumber=response.currentPage;
                         app.search.totalPages=response.totalPages;
