@@ -53,7 +53,7 @@ namespace Kanoon
 
             db.Database.Migrate();
 
-           DatabaseInitializer.Seed(db);
+            DatabaseInitializer.Seed(db);
 
             app.UseStaticFiles();
 

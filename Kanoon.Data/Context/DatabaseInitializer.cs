@@ -10,7 +10,7 @@ namespace Kanoon.Data.Context
     {
         public static void Seed(AppDbContext context)
         {
-            if (context.Users.Any())
+            if (!context.Users.Any())
             {
                 context.Users.Add(new User
                 {

@@ -24,6 +24,7 @@ namespace Kanoon.Controllers
         [HttpPost]
         public IActionResult Search(HeiatSearchModel model)
         {
+            System.Threading.Thread.Sleep(5000);
             var data = _heiatRepository.Search(model);
             return Ok(data);
         }
