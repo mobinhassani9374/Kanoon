@@ -237,6 +237,7 @@
                 this.search.pageNumber=1;
                 this.data = []
                 this.getData()
+                history.pushState({state:1}, "day", "?day="+this.search.day);
             },
             moreData:function() {
                 this.search.currentPage++;
@@ -245,6 +246,9 @@
             }
         },
         created:function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const day = urlParams.get('day');
+            this.search.day=day;
             this.getData()
         }
     })
