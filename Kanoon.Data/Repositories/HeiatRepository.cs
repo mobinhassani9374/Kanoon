@@ -6,6 +6,7 @@ using Kanoon.Utility.Pagination;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Kanoon.Data.Repositories
@@ -18,7 +19,20 @@ namespace Kanoon.Data.Repositories
         }
         public Paginated<HeiatModel> Search(HeiatSearchModel model)
         {
-            var query = this.AsQueryable().Include(c => c.Location);
+            var query = this
+                .AsQueryable()
+                .Include(c => c.Location)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(model.Day))
+            {
+                query = query.Where(c => c.WeekDay == model.Day);
+            }
+
+            if(model.LocationId.HasValue)
+            {
+                query = query.Where(c => c.LocationId.Equals(model.LocationId));
+            }
 
             var data = query
                 .ProjectTo<HeiatModel>()
