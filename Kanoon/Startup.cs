@@ -53,6 +53,8 @@ namespace Kanoon
 
             db.Database.Migrate();
 
+            DatabaseInitializer.Seed(db);
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

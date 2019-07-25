@@ -19,6 +19,8 @@ namespace Kanoon.Data.Context
 
         public DbSet<Heiat> Heiat { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         public ServiceResult Save()
         {
             if (this.SaveChanges() > 0) return ServiceResult.Okay();
@@ -52,6 +54,18 @@ namespace Kanoon.Data.Context
                 .HasForeignKey(c => c.LocationId)
                 .OnDelete(DeleteBehavior
                 .Cascade);
+
+            // user
+
+            var user = modelBuilder.Entity<User>();
+
+            user.Property(c => c.UserName).IsRequired().HasMaxLength(200);
+
+            user.HasIndex(c => c.UserName).IsUnique(true);
+
+            user.Property(c => c.FullName).HasMaxLength(200);
+
+            user.Property(c => c.Password).IsRequired().HasMaxLength(200);
         }
     }
 }
