@@ -142,8 +142,11 @@
                     </div>
                 </div>
             </div>
-            <div v-if="loading" class="text-center">
-                <img src="~/img/ajax-loader.gif" class="img-responsive" />
+            <div v-if="loading" class="text-center mb-3">
+                <div>
+                    <i class="fa fa-spin fa-spinner" style="font-size:20px;"></i>
+                </div>
+                <div style="font-weight:bold;color:#2a486c">در حال بارگیری اطلاعات</div>
             </div>
         </div><!-- Team Wrap -->
         <div class="text-center  clear" v-if="search.totalPages !=search.currentPage && search.totalPages!=0">
