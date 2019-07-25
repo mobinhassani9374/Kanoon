@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Kanoon.Data.Repositories;
+using Kanoon.DomainModels.Models.Heiat;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kanoon.Controllers
@@ -16,9 +17,10 @@ namespace Kanoon.Controllers
         }
 
         [HttpPost]
-        public IActionResult Search()
+        public IActionResult Search(HeiatSearchModel model)
         {
-            return View();
+            var data = _heiatRepository.Search(model);
+            return Ok(data);
         }
     }
 }
