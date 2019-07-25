@@ -135,7 +135,7 @@
         <div class="team-wrap2 text-center remove-ext3 mt-0">
             <div class="row" v-if="data.length!=0">
                 <div class="col-md-3 col-sm-6 col-lg-3" v-for="item in data">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
+                    <div class="team-box2">
                         <div class="team-box2__icon">
                             <i class="flaticon-mosque"></i>
                         </div>
@@ -144,10 +144,9 @@
                             <p style="font-weight:bold">{{item.locationTitle}}</p>
                             <p class="mt-1">روز برگزاری : {{item.weekDay}}</p>
                             <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
+                                <a :href="item.siteAddress" title="سایت" target="_blank"><i class="fa fa-globe"></i></a>
+                                <a :href="item.instagramAddress" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a :href="item.telegramAddress" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
                             </div>
                         </div>
                     </div>
@@ -248,7 +247,7 @@
         },
         created:function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const day = urlParams.get('day');
+            const day = urlParams.get('day') || "";
             this.search.day=day;
             this.getData()
         }
