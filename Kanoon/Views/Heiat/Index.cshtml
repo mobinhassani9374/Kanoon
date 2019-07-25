@@ -59,7 +59,7 @@
     }
 </style>
 
-<div class="gap">
+<div class="gap" id="app">
     <div class="container">
         <div class="sec-title style2 text-center">
             <div class="sec-title-inner">
@@ -84,6 +84,7 @@
                      <div class="form-group">
                         <label>روز هفته </label>
                         <select class="form-control">
+                            <option value="">همه روزهای هفته</option>
                             <option>شنبه</option>
                             <option>یکشنبه</option>
                             <option>دوشنبه</option>
@@ -98,8 +99,8 @@
                      <div class="form-group">
                         <label>انتخاب محله</label>
                         <select class="form-control">
-                            <option>شهرک صاحب الزمان</option>
-                            <option>شهرک  ولی عصر</option>
+                            <option value="">همه محله های منطقه 18 </option>
+                            <option v-for="item in location" :value="item.id">{{item.title}}</option>
                         </select>
                     </div>
                  </div>
@@ -265,3 +266,21 @@
     </div>
   </div>
 </div>
+
+<script>
+    var app = new Vue({
+        el:'#app',
+        data: {
+            location:[]
+        }
+    })
+
+    $(function() {       
+        $.ajax({
+            url:'/Admin/Location/ApiGet',
+            success:function(response) {               
+                app.location = response;                
+            }
+        })
+    })
+</script>
