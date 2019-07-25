@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+ <script src="~/lib/vue/vue.min.js"></script>
+
 <style>
     header.style1 {
         background: rgba(0,0,0,1);
@@ -85,7 +87,7 @@
                  <div class="col-md-4 col-12 col-sm-12">
                      <div class="form-group">
                         <label>روز هفته </label>
-                        <select class="form-control">
+                        <select v-model="search.day" class="form-control">
                             <option value="">همه روزهای هفته</option>
                             <option>شنبه</option>
                             <option>یکشنبه</option>
@@ -100,7 +102,7 @@
                  <div class="col-md-4 col-12 col-sm-12">
                      <div class="form-group">
                         <label>انتخاب محله</label>
-                        <select class="form-control">
+                        <select v-model="search.locationId" class="form-control">
                             <option value="">همه محله های منطقه 18 </option>
                             <option v-for="item in location" :value="item.id">{{item.title}}</option>
                         </select>
@@ -111,12 +113,12 @@
         </div>
         <div class="team-wrap2 text-center remove-ext3 mt-0">
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-lg-3">
+                <div class="col-md-3 col-sm-6 col-lg-3" v-for="item in data">
                     <div class="team-box2" data-toggle="modal" data-target="#myModal">
                         <img src="~/theme/img/heiat.jpg" alt="">
                         <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
+                            <h4>{{item.name}}</h4>
+                            <p>{{item.locationTitle}}</p>
                             <div class="team-scl">
                                 <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
                                 <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
@@ -126,111 +128,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-lg-3">
-                    <div class="team-box2" data-toggle="modal" data-target="#myModal">
-                        <img src="~/theme/img/heiat.jpg" alt="">
-                        <div class="team-info2">
-                            <h4>هییٔت قایٔمیون</h4>
-                            <p>شهرک صاحب الزمان خیابان نیک ملکی کوچه سحر حسینیه سیدالشهدا علیه السلام</p>
-                            <div class="team-scl">
-                                <a href="team.html#" title="توییتر" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="team.html#" title="اینستاگرام" target="_blank"><i class="fa fa-instagram"></i></a>
-                                <a href="team.html#" title="تلگرام" target="_blank"><i class="fa fa-send"></i></a>
-                                <a href="team.html#" title="فیسبوک" class="fa fa-facebook"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div><!-- Team Wrap -->
         <div class="text-center  clear">
@@ -273,7 +171,30 @@
     var app = new Vue({
         el:'#app',
         data: {
-            location:[]
+            location:[],
+            data:[],
+            search:{
+                pageNumber:1,
+                pageSize:8,
+                day:'',
+                locationId:''
+            }
+        },
+        methods:{
+            getData:function() {
+                var $this=this;
+                $.ajax({
+                    url:'/Heiat/Search',
+                    method:'Post',
+                    data:this.search,
+                    success:function(response) {
+                        app.data=response.data;
+                    }
+                })
+            }
+        },
+        created:function() {
+            this.getData()
         }
     })
 
