@@ -16,6 +16,11 @@ namespace Kanoon.Controllers
             _heiatRepository = heiatRepository;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Search(HeiatSearchModel model)
         {
