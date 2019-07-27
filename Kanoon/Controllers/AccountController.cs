@@ -61,5 +61,15 @@ namespace Kanoon.Controllers
 
             return View(model);
         }
+
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+            return RedirectPermanent("/");
+        }
     }
 }

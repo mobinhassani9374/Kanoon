@@ -24,7 +24,10 @@ namespace Kanoon.Controllers
         [HttpPost]
         public IActionResult Search(HeiatSearchModel model)
         {
+            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+            stopwatch.Start();
             var data = _heiatRepository.Search(model);
+            stopwatch.Stop();
             return Ok(data);
         }
     }
