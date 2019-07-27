@@ -21,6 +21,10 @@ namespace Kanoon.Controllers
         [Route("login")]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectPermanent("/");
+            }
             return View();
         }
 
