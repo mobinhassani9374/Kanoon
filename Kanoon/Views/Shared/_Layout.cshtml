@@ -57,6 +57,10 @@
                                 <li><a href="#" title="">حسینیه های منطقه ۱۸</a></li>
                                 <li><a href="#" title="">مساعدت مالی </a></li>
                                 <li><a href="#" title="">  درباره ما</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="/admin" title="">پنل ادمین</a></li>
+                                }
                             </ul>
                         </div>
                     </nav>
@@ -86,45 +90,51 @@
                 <div class="rsnp-mnu ps">
                     <span class="rspn-mnu-cls"> <i class="fa fa-times"></i> </span>
                     <ul>
-                                <li class="menu-item-has-children"><a href="##" title="">صفحه اصلی</a>
-                                    <ul>
-                                        <li><a href="#" title="">صفحه اصلی 1</a></li>
-                                        <li><a href="#" title="">صفحه اصلی 2</a></li>
-                                    </ul>
-                                </li>
+                        <li class="menu-item-has-children">
+                            <a href="##" title="">صفحه اصلی</a>
+                            <ul>
+                                <li><a href="#" title="">صفحه اصلی 1</a></li>
+                                <li><a href="#" title="">صفحه اصلی 2</a></li>
+                            </ul>
+                        </li>
 
-                                <li class="menu-item-has-children"><a href="##" title="">بلاگ</a>
+                        <li class="menu-item-has-children">
+                            <a href="##" title="">بلاگ</a>
+                            <ul>
+                                <li><a href="#" title="">صفحه اصلی</a></li>
+                                <li><a href="#" title="">صفحه مطلب</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" title="">رویداد ها</a></li>
+                        <li><a href="#" title="">کمک مالی </a></li>
+                        <li class="menu-item-has-children">
+                            <a href="##" title="">صفحات</a>
+                            <ul>
+                                <li><a href="#" title="">صفحه تیم 1</a></li>
+                                <li><a href="#" title="">صفحه تیم 2</a></li>
+                                <li><a href="#" title="">نمونه کار ها</a></li>
+                                <li><a href="#" title="">خدمات ما</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" title="">درباره ما</a></li>
+                        <li><a href="#" title="">تماس با ما</a></li>
+                        <li class="menu-item-has-children">
+                            <a href="##" title="">منو</a>
+                            <ul>
+                                <li><a href="#" title="">منو اصلی 1</a></li>
+                                <li><a href="#" title="">منوی اصلی 2</a></li>
+                                <li class="menu-item-has-children">
+                                    <a href="##" title="">منوی اصلی 3</a>
                                     <ul>
-                                        <li><a href="#" title="">صفحه اصلی</a></li>
-                                        <li><a href="#" title="">صفحه مطلب</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#" title="">رویداد ها</a></li>
-                                <li><a href="#" title="">کمک مالی </a></li>
-                                <li class="menu-item-has-children"><a href="##" title="">صفحات</a>
-                                    <ul>
-                                        <li><a href="#" title="">صفحه تیم 1</a></li>
-                                        <li><a href="#" title="">صفحه تیم 2</a></li>
-                                        <li><a href="#" title="">نمونه کار ها</a></li>
-                                        <li><a href="#" title="">خدمات ما</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#" title="">درباره ما</a></li>
-                                <li><a href="#" title="">تماس با ما</a></li>
-                                                            <li class="menu-item-has-children"><a href="##" title="">منو</a>
-                                    <ul>
-                                        <li><a href="#" title="">منو اصلی 1</a></li>
-                                        <li><a href="#" title="">منوی اصلی 2</a></li>
-                                        <li class="menu-item-has-children"><a href="##" title="">منوی اصلی 3</a>
-                                            <ul>
-                                                <li><a href="#" title="">زیرمنوی 1</a></li>
-                                                <li><a href="#" title="">زیر منوی 2</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="#" title="">زیرمنوی 1</a></li>
+                                        <li><a href="#" title="">زیر منوی 2</a></li>
                                     </ul>
                                 </li>
                             </ul>
-                <div class="ps__rail-x" style="left: 0px; top: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; left: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div><!-- Responsive Menu -->
+                        </li>
+                    </ul>
+                    <div class="ps__rail-x" style="left: 0px; top: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; left: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                </div><!-- Responsive Menu -->
             </div>
 
             @RenderBody()
